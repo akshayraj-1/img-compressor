@@ -4,11 +4,14 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 
 import App from './App.jsx';
 import Home from "./pages/Home.jsx";
+import API from "./pages/API.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App/>}>
             <Route index element={<Home/>}/>
+            <Route path="/api" element={<API/>}/>
+            <Route path="*" element={<Home/>}/>
         </Route>
     )
 );

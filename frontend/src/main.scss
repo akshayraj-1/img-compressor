@@ -17,7 +17,8 @@ html, body, #root {
   @apply
   size-full
   font-poppins
-  text-textPrimary;
+  text-textPrimary
+  bg-secondary;
 }
 
 *::-webkit-scrollbar {
