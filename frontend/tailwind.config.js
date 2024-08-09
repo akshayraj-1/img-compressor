@@ -19,6 +19,7 @@ export default {
             },
             backgroundImage: {
                 mainBg: `url("${ImageData.mainBg}")`,
+                button: `linear-gradient(125deg, #407BFF 0%, #60a7f9 100%)`
             },
             boxShadow: {
                 navBar: "0px 10px 25px -5px rgba(33, 35, 38, 0.05)",
