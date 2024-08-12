@@ -24,7 +24,7 @@ export default {
             boxShadow: {
                 navBar: "0px 10px 25px -5px rgba(33, 35, 38, 0.05)",
                 mainCard: "0px 25px 123px 0px rgba(33, 35, 38, 0.1)",
-                primaryButton: "0px 20px 80px 0px rgba(74, 144, 226, 0.2)"
+                primaryButton: "0px 20px 70px 0px rgba(74, 144, 226, 0.25)"
             },
             fontFamily: {
                 poppins: "Poppins, sans-serif"
