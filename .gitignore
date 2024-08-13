@@ -32,3 +32,4 @@ dist-ssr
 backend/*
 backend
 _push.ps1
+_deploy.ps1
