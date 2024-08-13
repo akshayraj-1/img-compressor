@@ -39,7 +39,7 @@ function Home() {
             <section className="flex flex-col gap-3 items-center justify-start size-full px-5 sm:px-8">
                 <h2 className="text-3xl sm:text-4xl leading-[125%] font-bold text-center">Can you find the difference?</h2>
                 <p className="text-textSecondary text-center sm:max-w-[60vw]">With seamless compression, you can reduce image size without losing image quality</p>
-                <div className="w-full sm:w-[70vw] max-w-[850px] bg-secondary shadow-mainCard shadow-accentLight/10 rounded-3xl overflow-hidden mt-5">
+                <div className="w-full sm:w-[70vw] max-w-[850px] bg-secondary shadow-mainCard shadow-accentLight/10 rounded-xl sm:rounded-3xl overflow-hidden mt-5">
                     <ImageComparison beforeImage={{ src: _sample, size: "1.9MB"}} afterImage={{src: _sample_min, size: "580KB"}} />
                 </div>
             </section>
