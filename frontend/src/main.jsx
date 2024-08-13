@@ -9,10 +9,9 @@ import Error from "./pages/Error.jsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<App/>}>
+        <Route path="/" element={<App/>} errorElement={<Error/>}>
             <Route index element={<Home/>}/>
             <Route path="/api" element={<API/>}/>
-            <Route path="*" element={<Error/>}/>
         </Route>
     )
 );

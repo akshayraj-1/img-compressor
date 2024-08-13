@@ -10,12 +10,11 @@ export default {
             colors: {
                 primary: "#fff",
                 secondary: "#fcfcff",
-                textPrimary: "#2d3737",
-                textSecondary: "#9b9fa9",
+                footer: "#f5f5f8",
+                textPrimary: "#263238",
+                textSecondary: "#8f9ba4",
                 accent: "#407BFF",
                 accentLight: "#60a7f9",
-                grad1: "#f3f7ff",
-                grad2: "#F8F8FF"
             },
             backgroundImage: {
                 mainBg: `url("${ImageData.mainBg}")`,
@@ -27,7 +26,7 @@ export default {
                 primaryButton: "0px 20px 70px 0px rgba(74, 144, 226, 0.25)"
             },
             fontFamily: {
-                poppins: "Poppins, sans-serif"
+                poppins: "Poppins, sans-serif",
             }
         }
     },

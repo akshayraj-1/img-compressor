@@ -1,18 +1,19 @@
 import {Suspense} from "react";
-import Navbar from "./components/Layouts/Navbar.jsx";
+import Navbar from "./components/Navbar.jsx";
 import {Outlet} from "react-router-dom";
-import MainBackground from "./components/Backgrouds/MainBackground.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
 
     return (
-        <MainBackground className="w-screen h-screen">
+        <>
             <Navbar/>
             <Suspense>
                 <Outlet/>
             </Suspense>
-        </MainBackground>
-    )
+            <Footer/>
+        </>
+    );
 }
 
 export default App;
