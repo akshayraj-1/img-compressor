@@ -1,4 +1,4 @@
-# imgCompressor
+# imgCompressor (Under Development)
 An image compressor app with a single click.
 
 Visit imgCompressor: [https://imgcompressor-app.web.app/](https://imgcompressor-app.web.app/)
