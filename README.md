@@ -1,25 +1,26 @@
 # imgCompressor (Under Development)
-An image compressor app with a single click.
 
-Visit imgCompressor: [https://imgcompressor-app.web.app/](https://imgcompressor-app.web.app/)
+User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.
+
+Preview: [imgCompressor](https://imgcompressor-app.web.app/)
 
 ## Features
 
-- Compress images with a single click
-- Reduce image size without losing image quality
-- Batch compress images
+- **One-Click Compression:** Compress images effortlessly with just a single click.
+- **High-Quality Retention:** Reduce the size of your images while preserving their original quality.
+- **Batch Processing:** Compress multiple images at once for increased efficiency.
 
 ## Stack
 
 - **Frontend:** React (Vite)
-- **Backend:** PHP (Compressor API)
+- **Backend:** PHP (Custom Compressor API)
 
 ## Usage
 
-1. Upload an image
-2. Compress the image
-3. Download the compressed image
+1. **Upload:** Select the image(s) you want to compress.
+2. **Compress:** Click the compress button to reduce the image size.
+3. **Download:** Save the compressed image(s) to your device.
 
 ## License
 
-MIT License Copyright (c) 2024 [imgCompressor](https://github.com/imgCompressor)
+This project is licensed under the MIT License. See the full license [here](LICENSE).
