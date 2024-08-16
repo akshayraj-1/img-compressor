@@ -34,9 +34,7 @@ function Home() {
             }
         });
         setCompressionQueue([...compressImages, ...compressionQueue]);
-        const response = await compress(files, 25, (progress) => {
-            console.log(progress);
-        });
+        const response = await compress(files, 25, () => {});
         if (response.success) {
             setCompressionQueue(prev => {
                 return prev.map(img => {

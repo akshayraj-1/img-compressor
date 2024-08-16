@@ -23,12 +23,12 @@ function ImageItem({ id, state = "compressing", imageSrc, title, originalSize, c
                 }
             </div>
             <div className="flex flex-col gap-1 flex-1">
-                <span className="font-medium text-[0.8rem] sm:text-[0.9rem] overflow-ellipsis line-clamp-2">{title}</span>
+                <span className="font-medium text-[0.8rem] sm:text-[0.9rem] overflow-ellipsis line-clamp-2 break-all">{title}</span>
                 <span className="font-normal text-[0.75rem] sm:text-sm text-textSecondary"><span className={cn(compressedSize && "line-through opacity-50")}>{originalSize}</span> {compressedSize}</span>
             </div>
             {
                 currentState === "compressed" && (
-                    <div className="flex items-center justify-end gap-4 flex-1">
+                    <div className="flex items-center justify-end gap-4 flex-[0.85]">
                         <DownloadCloud className="bg-button text-white p-1.5 w-full sm:w-14 rounded-full cursor-pointer"
                                        size={30}
                                        strokeWidth={1.8}

@@ -17,7 +17,7 @@ function useImageCompressor() {
             });
 
             Array.from({length: files.length}).fill(quality).forEach((q, idx) => {
-                formData.append(`quality[${idx}]`, q);
+                formData.append(`quality[${idx}]`, files[idx].type === "image/png" ? 90 : q);
             });
 
             const response = await axios.post(
