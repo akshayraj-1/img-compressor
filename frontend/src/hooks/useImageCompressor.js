@@ -32,7 +32,8 @@ function useImageCompressor() {
                 });
             return await response.data;
         } catch (e) {
-            return e.response?.data;
+            console.log(e.message);
+            return e.response && e.response.data ? e.response.data : { success: false };
         }
     };
 

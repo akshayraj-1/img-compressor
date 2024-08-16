@@ -1,4 +1,4 @@
-import { useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {ImagePlus, Upload} from 'lucide-react';
 import Button from "../components/UI/Button.jsx";
 import ImageComparison from "../components/ImageComparison.jsx";
@@ -20,58 +20,41 @@ function Home() {
 
 
     const handleImageSelection = async (e) => {
-        const files = e.target.files;
-        if (files.length === 0) {
-            return;
-        }
-        const compressImages = Array.from(files).map(file => {
-            console.log(file);
-            return {
-                imgSrc: URL.createObjectURL(file),
-                imgName: file.name,
-                imgSize: file.size,
-                currentState: "compressing"
-            }
-        });
-        setCompressionQueue([...compressImages, ...compressionQueue]);
+
+        const files = Array.from(e.target.files);
+        if (!files.length) return;
+
+        const compressImages = files.map(file => ({
+            imgSrc: URL.createObjectURL(file),
+            imgName: file.name,
+            imgSize: file.size,
+            currentState: "compressing"
+        }));
+
+        setCompressionQueue(prev => [...compressImages, ...prev]);
+
         const response = await compress(files, 25, () => {});
-        if (response.success) {
-            setCompressionQueue(prev => {
-                return prev.map(img => {
-                    const found = response.data.images?.find(o => o.original_name === img.imgName);
-                    if (found) {
-                        return {
-                            ...img,
-                            id: found.id,
-                            imgSrc: found.url,
-                            compressedSize: found.compressed_size * 1024,
-                            currentState: "compressed"
-                        }
-                    }
-                    return img;
-                })
-            })
-        } else {
-            setCompressionQueue(prev => {
-                return prev.map(img => {
-                    const found = response.data.images?.find(o => o.original_name === img.imgName);
-                    if (found) {
-                        return {
-                            ...img,
-                            currentState: "failed"
-                        }
-                    }
-                    return img;
-                })
-            })
-        }
-    }
+        if (!response) return;
+
+        setCompressionQueue(prev => prev.map(img => {
+            const found = response.data?.images?.find(o => o.original_name === img.imgName);
+            return found ? {
+                ...img,
+                id: found.id,
+                imgSrc: found.url,
+                compressedSize: found.compressed_size * 1024,
+                currentState: response.success ? "compressed" : "failed"
+            } : img;
+        }));
+    };
+
 
 
     return (
         <>
             <MainBackground className="relative">
-                <section className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
+                <section
+                    className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
                     <h1 className="text-center text-[2.3rem] sm:text-[2.6rem] leading-[125%] font-bold mt-10">
                         <span className="text-accent">Online</span> Image Compressor
                     </h1>
@@ -101,7 +84,7 @@ function Home() {
                                         compressionQueue.map((item, idx) => {
                                             return (
                                                 <ImageItem key={idx}
-                                                           id = {item.id || idx}
+                                                           id={item.id || idx}
                                                            imageSrc={item.imgSrc} title={item.imgName}
                                                            state={item.currentState || "compressing"}
                                                            originalSize={formatFileSize(item.imgSize, 1)}
