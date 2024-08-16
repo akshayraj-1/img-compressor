@@ -1,18 +1,23 @@
 import axios from "axios";
+import PropTypes from "prop-types";
 
 function useImageCompressor() {
 
     const API_URL = import.meta.env.VITE_COMPRESSOR_API_URL;
     const API_KEY = import.meta.env.VITE_COMPRESSOR_API_KEY;
 
-    const compress = async (files, quality = 75, onProgress = () => {}) => {
+    const compress = async (files, quality = 70, onProgress = () => {}) => {
         try {
             const formData = new FormData();
-            formData.append("apiKey", API_KEY);
+            formData.append("key", API_KEY);
             formData.append("quality", quality);
 
-            Array.from(files).forEach((file) => {
-               formData.append("images", file);
+            Array.from(files).forEach((file, idx) => {
+                formData.append(`files[${idx}]`, file);
+            });
+
+            Array.from({length: files.length}).fill(quality).forEach((q, idx) => {
+                formData.append(`quality[${idx}]`, q);
             });
 
             const response = await axios.post(
@@ -26,12 +31,16 @@ function useImageCompressor() {
                     },
                 });
             return await response.data;
-
         } catch (e) {
-            console.log(e);
-            throw e;
+            return e.response?.data;
         }
     };
+
+    compress.prototype = {
+        files: PropTypes.arrayOf(PropTypes.object).isRequired,
+        quality: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
+        onProgress: PropTypes.func
+    }
 
     return { compress };
 }

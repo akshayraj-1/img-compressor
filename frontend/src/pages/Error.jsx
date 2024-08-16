@@ -1,5 +1,5 @@
 import _404 from "../assets/images/_404.svg";
-import Button from "../components/Button.jsx";
+import Button from "../components/UI/Button.jsx";
 
 function Error() {
     return (

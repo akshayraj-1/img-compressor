@@ -21,6 +21,9 @@ Preview: [imgCompressor](https://imgcompressor-app.web.app/)
 2. **Compress:** Click the compress button to reduce the image size.
 3. **Download:** Save the compressed image(s) to your device.
 
+## API Documentation
+[API Documentation](https://imgcompressor-app.web.app/api)
+
 ## License
 
 This project is licensed under the MIT License. See the full license [here](LICENSE).
