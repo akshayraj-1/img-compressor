@@ -22,7 +22,7 @@ Preview: [imgCompressor](https://imgcompressor-app.web.app/)
 3. **Download:** Save the compressed image(s) to your device.
 
 ## API Documentation
-[API Documentation](https://imgcompressor-app.web.app/api)
+[API Documentation](https://github.com/akshayraj-1/ImageCompressor/blob/main/API_DOC.md)
 
 ## License
 
