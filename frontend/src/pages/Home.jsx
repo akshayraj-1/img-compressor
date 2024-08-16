@@ -72,7 +72,7 @@ function Home() {
         <>
             <MainBackground className="relative">
                 <section className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
-                    <h1 className="text-center text-[2.3rem] sm:text-[2.6rem] leading-[125%] font-bold mt-12">
+                    <h1 className="text-center text-[2.3rem] sm:text-[2.6rem] leading-[125%] font-bold mt-10">
                         <span className="text-accent">Online</span> Image Compressor
                     </h1>
                     <p className="text-textSecondary text-center text-sm sm:text-base sm:mx-6 sm:text-center">
