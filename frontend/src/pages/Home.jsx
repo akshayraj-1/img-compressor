@@ -8,6 +8,7 @@ import _sample_min from "../assets/images/_sample_min.jpg";
 import ImageItem from "../components/ImageItem.jsx";
 import useImageCompressor from "../hooks/useImageCompressor.js";
 import MainBackground from "../components/Backgrouds/MainBackground.jsx";
+import {formatFileSize} from "../utils/format.util.js";
 
 
 function Home() {
@@ -20,14 +21,52 @@ function Home() {
 
     const handleImageSelection = async (e) => {
         const files = e.target.files;
+        if (files.length === 0) {
+            return;
+        }
         const compressImages = Array.from(files).map(file => {
-            return URL.createObjectURL(file);
+            console.log(file);
+            return {
+                imgSrc: URL.createObjectURL(file),
+                imgName: file.name,
+                imgSize: file.size,
+                currentState: "compressing"
+            }
         });
         setCompressionQueue([...compressImages, ...compressionQueue]);
         const response = await compress(files, 25, (progress) => {
             console.log(progress);
         });
-        console.log(response);
+        if (response.success) {
+            setCompressionQueue(prev => {
+                return prev.map(img => {
+                    const found = response.data.images?.find(o => o.original_name === img.imgName);
+                    if (found) {
+                        return {
+                            ...img,
+                            id: found.id,
+                            imgSrc: found.url,
+                            compressedSize: found.compressed_size * 1024,
+                            currentState: "compressed"
+                        }
+                    }
+                    return img;
+                })
+            })
+        } else {
+            setCompressionQueue(prev => {
+                return prev.map(img => {
+                    const found = response.data.images?.find(o => o.original_name === img.imgName);
+                    if (found) {
+                        return {
+                            ...img,
+                            currentState: "failed"
+                        }
+                    }
+                    return img;
+                })
+            })
+        }
     }
 
 
@@ -63,9 +102,14 @@ function Home() {
                                     {
                                         compressionQueue.map((item, idx) => {
                                             return (
-                                                <ImageItem key={idx} imageSrc={item} title="Sample Image"
-                                                           state="compressing"
-                                                           compressedSize="580KB"/>
+                                                <ImageItem key={idx}
+                                                           id = {item.id || idx}
+                                                           imageSrc={item.imgSrc} title={item.imgName}
+                                                           state={item.currentState || "compressing"}
+                                                           originalSize={formatFileSize(item.imgSize, 1)}
+                                                           compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}
+                                                           onDelete={(id) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== id))}
+                                                />
                                             );
                                         })
                                     }

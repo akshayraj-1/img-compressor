@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import {DownloadCloud, Trash2} from "lucide-react";
 import {useEffect, useState} from "react";
-import cn from "../utils/cn.util.js";
 import CircularLoader from "./Loaders/CircularLoader/CircularLoader.jsx";
+import cn from "../utils/cn.util.js";
 
-function ImageItem({ id, state = "compressing", imageSrc, title, compressedSize, onDelete, className }) {
+function ImageItem({ id, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete, className }) {
 
     const [currentState, setCurrentState] = useState(state);
 
@@ -24,7 +24,7 @@ function ImageItem({ id, state = "compressing", imageSrc, title, compressedSize,
             </div>
             <div className="flex flex-col gap-1 flex-1">
                 <span className="font-medium text-[0.8rem] sm:text-[0.9rem] overflow-ellipsis line-clamp-2">{title}</span>
-                <span className="font-normal text-[0.75rem] sm:text-sm text-textSecondary">{compressedSize}</span>
+                <span className="font-normal text-[0.75rem] sm:text-sm text-textSecondary"><span className={cn(compressedSize && "line-through opacity-50")}>{originalSize}</span> {compressedSize}</span>
             </div>
             {
                 currentState === "compressed" && (
@@ -51,7 +51,8 @@ ImageItem.prototype = {
     state: PropTypes.oneOf(["compressing", "compressed", "failed"]),
     imageSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    compressedSize: PropTypes.string.isRequired,
+    originalSize: PropTypes.string.isRequired,
+    compressedSize: PropTypes.string,
     onDelete: PropTypes.func.isRequired,
     className: PropTypes.string
 };
