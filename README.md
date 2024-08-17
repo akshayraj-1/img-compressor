@@ -2,7 +2,7 @@
 
 User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.
 
-Preview: [imgCompressor](https://imgcompressor-app.web.app/)
+Preview: [https://imgcompressor-app.web.app/](https://imgcompressor-app.web.app/)
 
 ## Features
 

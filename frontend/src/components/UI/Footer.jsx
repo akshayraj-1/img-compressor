@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {version} from "../../../package.json";
 
 function Footer() {
     return (
@@ -6,7 +7,8 @@ function Footer() {
             <Link to="/">
                 <img className="h-5" src="/images/logo.svg" alt="logo"/>
             </Link>
-            <p className="text-sm text-textSecondary text-center mt-2">Copyright © 2022. All rights reserved.</p>
+            <p className="text-sm text-textSecondary text-center mt-2">Copyright © 2024. All rights reserved.</p>
+            <p className="text-sm text-textSecondary text-center">Version: {version}</p>
         </footer>
 );
 }

@@ -30,5 +30,3 @@ dist-ssr
 # Build directories and files
 backend/*
 backend
-_push.ps1
-_deploy.ps1
