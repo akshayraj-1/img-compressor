@@ -13,7 +13,7 @@ function MainBackground({ children, className }) {
     );
 }
 
-MainBackground.prototype = {
+MainBackground.propTypes = {
     children: PropTypes.node.isRequired,
     className: PropTypes.string
 }

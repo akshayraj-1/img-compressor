@@ -45,7 +45,7 @@ function ImageComparison({ beforeImage, afterImage, className }) {
     );
 }
 
-ImageComparison.prototypes = {
+ImageComparison.propTypes = {
     beforeImage: PropTypes.shape({
         src: PropTypes.string.isRequired,
         size: PropTypes.string.isRequired

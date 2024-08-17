@@ -9,6 +9,7 @@ import ImageItem from "../components/ImageItem.jsx";
 import useImageCompressor from "../hooks/useImageCompressor.js";
 import MainBackground from "../components/Backgrouds/MainBackground.jsx";
 import {formatFileSize} from "../utils/format.util.js";
+import useCustomToast from "../hooks/useCustomToast.jsx";
 
 
 function Home() {
@@ -16,6 +17,7 @@ function Home() {
     const inputRef = useRef(null);
     const [compressionQueue, setCompressionQueue] = useState([]);
 
+    const {CustomToastModal, showToast} = useCustomToast();
     const {compress} = useImageCompressor();
 
 
@@ -23,35 +25,51 @@ function Home() {
 
         const files = Array.from(e.target.files);
         if (!files.length) return;
+        if (files.length > 30) {
+            showToast("Please select less than 30 images", "error");
+            return;
+        }
 
         const compressImages = files.map(file => ({
+            id: file.name + Date.now(),
             imgSrc: URL.createObjectURL(file),
             imgName: file.name,
             imgSize: file.size,
             currentState: "compressing"
         }));
+        const currentBatchNames = compressImages.map(img => img.imgName);
 
         setCompressionQueue(prev => [...compressImages, ...prev]);
 
         const response = await compress(files, 25, () => {});
-        if (!response) return;
-
-        setCompressionQueue(prev => prev.map(img => {
-            const found = response.data?.images?.find(o => o.original_name === img.imgName);
-            return found ? {
-                ...img,
-                id: found.id,
-                imgSrc: found.url,
-                compressedSize: found.compressed_size * 1024,
-                currentState: response.success ? "compressed" : "failed"
-            } : img;
-        }));
+        if (!response || !response.success) {
+            setCompressionQueue(prev =>
+                prev.map(img =>
+                    currentBatchNames.includes(img.imgName)
+                        ? { ...img, currentState: "failed" }
+                        : img
+                )
+            );
+        } else {
+            setCompressionQueue(prev =>
+                prev?.map(img => {
+                    const found = response.data?.images?.find(o => o.original_name === img.imgName);
+                    return found ? {
+                        ...img,
+                        id: found.id,
+                        imgSrc: found.url,
+                        compressedSize: found.compressed_size * 1024,
+                        currentState: found.success ? "compressed" : "failed"
+                    } : img;
+                })
+            );
+        }
     };
-
 
 
     return (
         <>
+            <CustomToastModal/>
             <MainBackground className="relative">
                 <section
                     className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
@@ -81,11 +99,12 @@ function Home() {
                                 <div id="image-list"
                                      className="flex flex-col gap-3.5 size-full max-h-[60vh] overflow-y-scroll">
                                     {
-                                        compressionQueue.map((item, idx) => {
+                                        compressionQueue.map(item => {
                                             return (
-                                                <ImageItem key={idx}
-                                                           id={item.id || idx}
-                                                           imageSrc={item.imgSrc} title={item.imgName}
+                                                <ImageItem key={item.id}
+                                                           id={item.id}
+                                                           imageSrc={item.imgSrc}
+                                                           title={item.imgName}
                                                            state={item.currentState || "compressing"}
                                                            originalSize={formatFileSize(item.imgSize, 1)}
                                                            compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}

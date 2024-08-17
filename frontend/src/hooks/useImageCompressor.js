@@ -16,12 +16,11 @@ function useImageCompressor() {
                 formData.append(`files[${idx}]`, file);
             });
 
-            Array.from({length: files.length}).fill(quality).forEach((q, idx) => {
-                formData.append(`quality[${idx}]`, files[idx].type === "image/png" ? 90 : q);
-            });
+            console.log(files.length);
 
             const response = await axios.post(
                 API_URL, formData, {
+                    timeout: 0,
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
@@ -37,7 +36,7 @@ function useImageCompressor() {
         }
     };
 
-    compress.prototype = {
+    compress.propTypes = {
         files: PropTypes.arrayOf(PropTypes.object).isRequired,
         quality: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
         onProgress: PropTypes.func
