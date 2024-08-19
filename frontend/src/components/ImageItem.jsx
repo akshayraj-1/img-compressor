@@ -1,23 +1,58 @@
-import PropTypes from "prop-types";
-import {DownloadCloud, Trash2} from "lucide-react";
 import React, {useEffect, useState} from "react";
-import CircularLoader from "./Loaders/CircularLoader/CircularLoader.jsx";
+import PropTypes from "prop-types";
+import {motion} from "framer-motion";
+import {DownloadCloud, Trash2} from "lucide-react";
 import cn from "../utils/cn.util.js";
+import CircularLoader from "./Loaders/CircularLoader/CircularLoader.jsx";
+
+const variants = {
+    item: {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                ease: "anticipate"
+            }
+        }
+    },
+    image: {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeInOut"
+            }
+        }
+    },
+    currentSate: {
+        initial: { opacity: 0 },
+        animate: {
+            opacity: 1,
+            transition: {
+                duration: 0.5,
+                ease: "easeIn"
+            }
+        }
+    }
+}
 
 const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete, className}) => {
 
     const [currentState, setCurrentState] = useState(state);
+    const [isImageLoading, setIsImageLoading] = useState(true);
 
     useEffect(() => {
         setCurrentState(state);
     }, [state]);
 
     return (
-        <div className="relative flex gap-3 items-center w-full px-5 py-1 bg-secondary">
-            <div className="relative h-16 aspect-[4/3] sm:aspect-video rounded-lg overflow-hidden">
-                <img className="size-full object-cover" src={imageSrc} alt=""/>
+        <motion.div variants={variants.item} initial={currentState === "uploading" && "initial"} animate={currentState === "uploading" && "animate"} className="relative flex gap-3 items-center w-full px-5 py-1">
+            <div className={cn("relative h-16 aspect-[4/3] sm:aspect-video rounded-lg overflow-hidden bg-gray-100", isImageLoading && "animate-pulse")}>
+                <motion.img variants={variants.image} initial={"initial"} animate={ isImageLoading ? "initial" : "animate"} onLoad={() => setIsImageLoading(false)} className="size-full object-cover" src={imageSrc} alt="" loading="lazy"/>
                 {
-                    currentState === "compressing" && (
+                    (currentState === "compressing" || currentState === "uploading") && (
                         <CircularLoader className="absolute top-0 left-0 size-full bg-black/15"/>
                     )
                 }
@@ -30,7 +65,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
             </div>
             {
                 currentState === "compressed" ? (
-                        <div className="flex items-center justify-end gap-4 flex-[0.85]">
+                        <motion.div variants={variants.currentSate} initial={"initial"} animate={"animate"} className="flex items-center justify-end gap-4 flex-[0.85]">
                             <a href={imageSrc} download={title}>
                                 <DownloadCloud className="bg-button text-white p-1.5 w-full sm:w-14 rounded-full cursor-pointer"
                                                size={30}
@@ -42,16 +77,16 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
                                     strokeWidth={1.8}
                                     onClick={() => onDelete(id)}
                             />
-                        </div>
+                        </motion.div>
                     )
                     : (
-                        <span className={cn("min-w-16 text-center text-secondary px-1.5 py-[1.5px] text-[0.75rem] rounded capitalize", currentState === "failed" ? "bg-red-400" : "bg-accent")}>
+                        <motion.span variants={variants.currentSate} initial={"initial"} animate={"animate"} className={cn("min-w-16 text-center text-secondary px-1.5 py-[1.5px] text-[0.75rem] rounded capitalize", currentState === "failed" ? "bg-red-400" : currentState === "uploading" ? "bg-yellow-400" : "bg-accent")}>
                             {currentState}
-                        </span>
+                        </motion.span>
                     )
 
             }
-        </div>
+        </motion.div>
     );
 }, (prevProps, nextProps) => {
     return prevProps.id === nextProps.id && prevProps.state === nextProps.state;
@@ -59,7 +94,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
 
 ImageItem.propTypes = {
     id: PropTypes.string.isRequired,
-    state: PropTypes.oneOf(["compressing", "compressed", "failed"]),
+    state: PropTypes.oneOf(["uploading", "compressing", "compressed", "failed"]),
     imageSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     originalSize: PropTypes.string.isRequired,

@@ -1,47 +1,65 @@
 import {useRef, useState} from "react";
-import {ImagePlus, Upload} from 'lucide-react';
+import {Upload} from 'lucide-react';
+import Lottie from 'react-lottie';
+import useCustomToast from "../hooks/useCustomToast.jsx";
+import useImageCompressor from "../hooks/useImageCompressor.js";
+import cn from "../utils/cn.util.js";
+import {formatFileSize} from "../utils/format.util.js";
+
 import Button from "../components/UI/Button.jsx";
 import ImageComparison from "../components/ImageComparison.jsx";
-
+import MainBackground from "../components/Backgrouds/MainBackground.jsx";
+import ImageItem from "../components/ImageItem.jsx";
 import _sample from "../assets/images/_sample.jpg";
 import _sample_min from "../assets/images/_sample_min.jpg";
-import ImageItem from "../components/ImageItem.jsx";
-import useImageCompressor from "../hooks/useImageCompressor.js";
-import MainBackground from "../components/Backgrouds/MainBackground.jsx";
-import {formatFileSize} from "../utils/format.util.js";
-import useCustomToast from "../hooks/useCustomToast.jsx";
+import _lottie_image from "../assets/lottie/_lottie_image.json";
 
 
 function Home() {
 
     const inputRef = useRef(null);
     const [compressionQueue, setCompressionQueue] = useState([]);
+    const [isDragging, setIsDragging] = useState(false);
 
     const {CustomToastModal, showToast} = useCustomToast();
     const {compress} = useImageCompressor();
 
+    const defaultLottieConfig = {
+        loop: false,
+        autoplay: true,
+        speed: 23,
+        animationData: _lottie_image,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    }
 
-    const handleImageSelection = async (e) => {
-
-        const files = Array.from(e.target.files);
-        if (!files.length) return;
-        if (files.length > 30) {
+    const uploadImagesForCompression = async (files) => {
+        if (!files || files.length > 30) {
             showToast("Please select less than 30 images", "error");
             return;
         }
-
         const compressImages = files.map(file => ({
             id: file.name + Date.now(),
             imgSrc: URL.createObjectURL(file),
             imgName: file.name,
             imgSize: file.size,
-            currentState: "compressing"
+            currentState: "uploading"
         }));
         const currentBatchNames = compressImages.map(img => img.imgName);
-
         setCompressionQueue(prev => [...compressImages, ...prev]);
 
-        const response = await compress(files, 25, () => {});
+        const response = await compress(files, 25, (progress) => {
+            if (progress >= 100) {
+                setCompressionQueue(prev =>
+                    prev?.map(img =>
+                        currentBatchNames.includes(img.imgName)
+                            ? { ...img, currentState: "compressing" }
+                            : img
+                    )
+                );
+            }
+        });
         if (!response || !response.success) {
             setCompressionQueue(prev =>
                 prev.map(img =>
@@ -66,6 +84,20 @@ function Home() {
         }
     };
 
+    const handleImageDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const dataTransfer = e.dataTransfer;
+        if (dataTransfer.files) {
+            setIsDragging(false);
+            uploadImagesForCompression(Array.from(dataTransfer.files));
+        }
+    };
+
+    const handleImageSelection = (e) => {
+        uploadImagesForCompression(Array.from(e.target.files));
+    };
+
 
     return (
         <>
@@ -80,16 +112,27 @@ function Home() {
                         Compress images with a single click, reduce image size without losing image quality.
                     </p>
                     <div
-                        className="flex flex-col justify-center items-center gap-3.5 bg-secondary rounded-xl shadow-mainCard px-8 py-9 mt-8 border-2 border-textSecondary/30 border-dashed w-full sm:w-[70vw] max-w-[850px]">
-                        <ImagePlus className="text-textSecondary" size={90} strokeWidth={3} absoluteStrokeWidth/>
-                        <input ref={inputRef} type="file" accept="image/jpg, image/jpeg, image/png" hidden
-                               multiple={true} onInput={handleImageSelection}/>
-                        <Button type="button" variant="primary"
-                                className="mt-2.5 py-3"
-                                label="Upload Image"
-                                icon={<Upload size={18} absoluteStrokeWidth/>}
-                                onClick={() => inputRef.current.click()}/>
-                        <p className="text-textSecondary text-sm">or drop your images</p>
+                        className={cn("relative bg-secondary rounded-xl shadow-mainCard px-8 py-9 mt-8 border-2 " +
+                            "border-textSecondary/30 border-dashed w-full sm:w-[70vw] max-w-[850px] overflow-hidden",
+                            isDragging && "border-accentLight/60")}
+                        onDrop={handleImageDrop}
+                        onDragOver={e => e.preventDefault() && setIsDragging(true)}
+                        onDragEnter={() => setIsDragging(true)}
+                        onDragExit={() => setIsDragging(false)}
+                        onDragLeave={() => setIsDragging(false)}
+                    >
+                        <div className="flex flex-col justify-center items-center gap-3">
+                            <Lottie options={defaultLottieConfig} width={125} height={125} isClickToPauseDisabled={true} style={{cursor: "default"}}/>
+                            <input ref={inputRef} type="file" accept="image/jpg, image/jpeg, image/png, image/gif"
+                                   hidden
+                                   multiple={true} onInput={handleImageSelection}/>
+                            <Button type="button" variant="primary"
+                                    className="mt-2 py-3"
+                                    label="Upload Image"
+                                    icon={<Upload size={18} absoluteStrokeWidth/>}
+                                    onClick={() => inputRef.current.click()}/>
+                            <p className="text-textSecondary text-sm">or drop your images</p>
+                        </div>
                     </div>
 
                     {

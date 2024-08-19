@@ -1,6 +1,6 @@
+import {useState} from "react";
 import PropTypes from "prop-types";
 import cn from "../utils/cn.util.js";
-import {useState} from "react";
 import {SeparatorVertical} from "lucide-react";
 
 function ImageComparison({ beforeImage, afterImage, className }) {
