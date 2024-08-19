@@ -1,6 +1,5 @@
 import {useRef, useState} from "react";
 import {Upload} from 'lucide-react';
-import Lottie from 'react-lottie';
 import useCustomToast from "../hooks/useCustomToast.jsx";
 import useImageCompressor from "../hooks/useImageCompressor.js";
 import cn from "../utils/cn.util.js";
@@ -12,8 +11,7 @@ import MainBackground from "../components/Backgrouds/MainBackground.jsx";
 import ImageItem from "../components/ImageItem.jsx";
 import _sample from "../assets/images/_sample.jpg";
 import _sample_min from "../assets/images/_sample_min.jpg";
-import _lottie_image from "../assets/lottie/_lottie_image.json";
-
+import _picker_icon from "../assets/images/_picker_icon.svg";
 
 function Home() {
 
@@ -23,16 +21,6 @@ function Home() {
 
     const {CustomToastModal, showToast} = useCustomToast();
     const {compress} = useImageCompressor();
-
-    const defaultLottieConfig = {
-        loop: false,
-        autoplay: true,
-        speed: 23,
-        animationData: _lottie_image,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
-    }
 
     const uploadImagesForCompression = async (files) => {
         if (!files || files.length > 30) {
@@ -49,7 +37,7 @@ function Home() {
         const currentBatchNames = compressImages.map(img => img.imgName);
         setCompressionQueue(prev => [...compressImages, ...prev]);
 
-        const response = await compress(files, 25, (progress) => {
+        const response = await compress(files, 20, (progress) => {
             if (progress >= 100) {
                 setCompressionQueue(prev =>
                     prev?.map(img =>
@@ -121,13 +109,13 @@ function Home() {
                         onDragExit={() => setIsDragging(false)}
                         onDragLeave={() => setIsDragging(false)}
                     >
-                        <div className="flex flex-col justify-center items-center gap-3">
-                            <Lottie options={defaultLottieConfig} width={125} height={125} isClickToPauseDisabled={true} style={{cursor: "default"}}/>
+                        <div className="flex flex-col justify-center items-center gap-3.5">
+                            <img src={_picker_icon} alt="" className="size-32"/>
                             <input ref={inputRef} type="file" accept="image/jpg, image/jpeg, image/png, image/gif"
                                    hidden
                                    multiple={true} onInput={handleImageSelection}/>
                             <Button type="button" variant="primary"
-                                    className="mt-2 py-3"
+                                    className="py-3"
                                     label="Upload Image"
                                     icon={<Upload size={18} absoluteStrokeWidth/>}
                                     onClick={() => inputRef.current.click()}/>

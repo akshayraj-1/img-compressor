@@ -1,7 +1,7 @@
 {
     "name":  "img-compressor",
     "private":  true,
-    "version":  "1.0.9",
+    "version":  "2.0.2",
     "type":  "module",
     "scripts":  {
                     "dev":  "vite",
@@ -17,7 +17,6 @@
                          "prop-types":  "^15.8.1",
                          "react":  "^18.3.1",
                          "react-dom":  "^18.3.1",
-                         "react-lottie":  "^1.2.4",
                          "react-router-dom":  "^6.26.0",
                          "tailwind-merge":  "^2.4.0"
                      },
