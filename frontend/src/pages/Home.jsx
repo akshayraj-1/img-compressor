@@ -27,21 +27,22 @@ function Home() {
             showToast("Please select less than 30 images", "error");
             return;
         }
-        const compressImages = files.map(file => ({
-            id: file.name + Date.now(),
-            imgSrc: URL.createObjectURL(file),
-            imgName: file.name,
-            imgSize: file.size,
-            currentState: "uploading"
-        }));
-        const currentBatchNames = compressImages.map(img => img.imgName);
-        setCompressionQueue(prev => [...compressImages, ...prev]);
+        const currentBatch = files.map(file => {
+            return {
+                id: (Date.now() + Math.round(Math.random() * 1000)).toString(),
+                imgSrc: URL.createObjectURL(file),
+                imgName: file.name,
+                imgSize: file.size,
+                currentState: "uploading"
+            };
+        });
+
+        setCompressionQueue(prev => [...currentBatch, ...prev]);
 
         const response = await compress(files, 20, (progress) => {
             if (progress >= 100) {
                 setCompressionQueue(prev =>
-                    prev?.map(img =>
-                        currentBatchNames.includes(img.imgName)
+                    prev?.map(img => currentBatch.find(o => o.imgName === img.imgName && img.currentState === "uploading")
                             ? { ...img, currentState: "compressing" }
                             : img
                     )
@@ -50,8 +51,7 @@ function Home() {
         });
         if (!response || !response.success) {
             setCompressionQueue(prev =>
-                prev.map(img =>
-                    currentBatchNames.includes(img.imgName)
+                prev?.map(img => currentBatch.find(o => o.imgName === img.imgName)
                         ? { ...img, currentState: "failed" }
                         : img
                 )
@@ -59,7 +59,10 @@ function Home() {
         } else {
             setCompressionQueue(prev =>
                 prev?.map(img => {
-                    const found = response.data?.images?.find(o => o.original_name === img.imgName);
+                    const found = response.data?.images?.find(o => o.original_name === img.imgName && img.currentState === "compressing");
+                    if (found && !found.success) {
+                        showToast("Something went wrong", "error");
+                    }
                     return found ? {
                         ...img,
                         id: found.id,
@@ -78,12 +81,16 @@ function Home() {
         const dataTransfer = e.dataTransfer;
         if (dataTransfer.files) {
             setIsDragging(false);
-            uploadImagesForCompression(Array.from(dataTransfer.files));
+            uploadImagesForCompression(Array.from(dataTransfer.files)).then(() => {
+                dataTransfer.clearData();
+            });
         }
     };
 
     const handleImageSelection = (e) => {
-        uploadImagesForCompression(Array.from(e.target.files));
+        uploadImagesForCompression(Array.from(e.target.files)).then(() => {
+            e.target.value = null;
+        });
     };
 
 
@@ -133,13 +140,12 @@ function Home() {
                                         compressionQueue.map(item => {
                                             return (
                                                 <ImageItem key={item.id}
-                                                           id={item.id}
                                                            imageSrc={item.imgSrc}
                                                            title={item.imgName}
                                                            state={item.currentState || "compressing"}
                                                            originalSize={formatFileSize(item.imgSize, 1)}
                                                            compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}
-                                                           onDelete={(id) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== id))}
+                                                           onDelete={(key) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== key))}
                                                 />
                                             );
                                         })

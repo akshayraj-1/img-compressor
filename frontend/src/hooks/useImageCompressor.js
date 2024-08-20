@@ -12,11 +12,9 @@ function useImageCompressor() {
             formData.append("key", API_KEY);
             formData.append("quality", quality);
 
-            Array.from(files).forEach((file, idx) => {
+            [...files].forEach((file, idx) => {
                 formData.append(`files[${idx}]`, file);
             });
-
-            console.log(files.length);
 
             const response = await axios.post(
                 API_URL, formData, {

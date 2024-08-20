@@ -38,7 +38,8 @@ const variants = {
     }
 }
 
-const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete, className}) => {
+// eslint-disable-next-line react/display-name
+const ImageItem = React.memo(({key, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete}) => {
 
     const [currentState, setCurrentState] = useState(state);
     const [isImageLoading, setIsImageLoading] = useState(true);
@@ -65,9 +66,9 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
             </div>
             {
                 currentState === "compressed" ? (
-                        <motion.div variants={variants.currentSate} initial={"initial"} animate={"animate"} className="flex items-center justify-end gap-4 flex-[0.85]">
+                        <motion.div variants={variants.currentSate} initial={"initial"} animate={"animate"} className="flex items-center justify-end gap-4">
                             <a href={imageSrc} download={title}>
-                                <DownloadCloud className="bg-button text-white p-1.5 w-full sm:w-14 rounded-full cursor-pointer"
+                                <DownloadCloud className="bg-button text-white p-2 sm:p-1.5 w-8 sm:w-14 rounded-full cursor-pointer"
                                                size={30}
                                                strokeWidth={1.8}
                                 />
@@ -75,7 +76,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
                             <Trash2 className="text-textSecondary hover:text-red-500 w-full sm:w-auto cursor-pointer"
                                     size={19}
                                     strokeWidth={1.8}
-                                    onClick={() => onDelete(id)}
+                                    onClick={() => onDelete(key)}
                             />
                         </motion.div>
                     )
@@ -89,18 +90,16 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
         </motion.div>
     );
 }, (prevProps, nextProps) => {
-    return prevProps.id === nextProps.id && prevProps.state === nextProps.state;
+    return prevProps.key === nextProps.key && prevProps.state === nextProps.state;
 });
 
 ImageItem.propTypes = {
-    id: PropTypes.string.isRequired,
     state: PropTypes.oneOf(["uploading", "compressing", "compressed", "failed"]),
     imageSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     originalSize: PropTypes.string.isRequired,
     compressedSize: PropTypes.string,
-    onDelete: PropTypes.func.isRequired,
-    className: PropTypes.string
+    onDelete: PropTypes.func.isRequired
 };
 
 export default ImageItem;
