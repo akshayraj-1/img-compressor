@@ -2,25 +2,12 @@
 
 This API allows users to upload and compress images with specified quality settings. It supports both single and multiple image uploads and ensures that only accepted file types are processed. The API has restrictions on individual and total file sizes. Below is the detailed documentation of the API endpoints, request parameters, response format, and error handling.
 
+##### `$version = v2`
+
 ## Base URL
-https://api.igyaanstudios.com/
-
-## Public API Key
-`mSW0LMB5Pj4pNWWiRGfHL89KYdzrdWNM`
-
-## Endpoints
-
-| Endpoint | Method | Parameters | Description |
-| -------- | ------ | ---------- | ----------- |
-| /image-compressor/v1/ | POST | - | Upload and compress images with specified quality settings. |
-
-
-## Request Headers
-
-- `Access-Control-Allow-Origin: *`
-- `Access-Control-Allow-Methods: POST, GET, OPTIONS`
-- `Access-Control-Allow-Headers: Authorization, Content-Type`
-- `Content-Type: application/json; charset=utf-8`
+```angular17svg
+https://api.igyaanstudios.com/image-compressor/$version/
+```
 
 ## Allowed Methods
 
@@ -40,7 +27,7 @@ https://api.igyaanstudios.com/
 
 - **POST**
 
-## Request Parameters
+## Request Body
 
 1. **`key`** (required):
     - **Type**: `String`
@@ -65,7 +52,7 @@ https://api.igyaanstudios.com/
     - **Description**: The total size of all uploaded files combined should not exceed `250 MB`.
 
 2. **`MAX_FILE_SIZE`**:
-    - **Value**: `10 MB`
+    - **Value**: `15 MB`
     - **Description**: Individual file size should not exceed `10 MB`.
 
 3. **Accepted File Types**:
@@ -90,7 +77,7 @@ curl -X POST https://api.igyaanstudios.com/image-compressor/v1/ \
 ```
 
 **Multipart Form Data Example:**
-```
+```angular2html
 <form action="https://api.igyaanstudios.com/image-compressor/v1/" method="POST" enctype="multipart/form-data">
     <input type="file" name="files">
     <input type="text" name="quality" value="80">
@@ -115,8 +102,7 @@ curl -X POST https://api.igyaanstudios.com/image-compressor/v1/ \
 **Multipart Form Data Example:**
 ```angular2html
 <form action="https://api.igyaanstudios.com/image-compressor/v1/" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files">
-    <input type="file" name="files">
+    <input type="file" name="files" multiple>
     <input type="text" name="quality" value="80">
     <input type="hidden" name="key" value="your_api_key">
     <button type="submit">Upload & Compress</button>
@@ -212,7 +198,7 @@ The API returns a JSON response containing the status of the request and the det
 {
   "success": false,
   "status_code": 415,
-  "message": "Unsupported file type: [file => image1.gif, type => image/gif]"
+  "message": "Unsupported file type: [file => image1.webp, type => image/webp]"
 }
 
 ```
@@ -232,20 +218,12 @@ The API returns a JSON response containing the status of the request and the det
 
 The API will delete the uploaded files after successful compression. However, if an error occurs during the compression process, the API will not delete the uploaded files.
 
-
-## Security Considerations
-
-- **API Key Required** - An API key is required to authenticate the request.
-- **HTTPS** - HTTPS is required for the API to be secured.
-- **CORS** - Cross-Origin Resource Sharing (CORS) is required for the API to be secured.
-
 ## Notes
 
-- **The API is under development and may change in the future.**
-- **The API is not intended for commercial use.**
-- **The API is provided as-is.**
-- **The API is provided without warranty of any kind.**
+- The API is under development and may change in the future.
+- The API is not intended for commercial use.
+- The API is provided without warranty of any kind.
 
 ## Conclusion
 
-Thank you for using the imgCompressor API. If you have any questions or feedback, please feel free to [contact us](https://github.com/akshayraj-1/ImageCompressor/issues)
+Thank you for using the imgCompressor API. If you have any questions or feedback, please feel free to [raise an issue](https://github.com/akshayraj-1/ImageCompressor/issues)

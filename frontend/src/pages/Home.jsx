@@ -56,6 +56,7 @@ function Home() {
                         : img
                 )
             );
+            showToast(response?.data?.message || "Something went wrong", "error");
         } else {
             setCompressionQueue(prev =>
                 prev?.map(img => {
@@ -140,6 +141,7 @@ function Home() {
                                         compressionQueue.map(item => {
                                             return (
                                                 <ImageItem key={item.id}
+                                                           id={item.id}
                                                            imageSrc={item.imgSrc}
                                                            title={item.imgName}
                                                            state={item.currentState || "compressing"}

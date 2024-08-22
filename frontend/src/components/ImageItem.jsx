@@ -39,7 +39,7 @@ const variants = {
 }
 
 // eslint-disable-next-line react/display-name
-const ImageItem = React.memo(({key, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete}) => {
+const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete}) => {
 
     const [currentState, setCurrentState] = useState(state);
     const [isImageLoading, setIsImageLoading] = useState(true);
@@ -90,7 +90,7 @@ const ImageItem = React.memo(({key, state = "compressing", imageSrc, title, orig
         </motion.div>
     );
 }, (prevProps, nextProps) => {
-    return prevProps.key === nextProps.key && prevProps.state === nextProps.state;
+    return prevProps.id === nextProps.id && prevProps.state === nextProps.state;
 });
 
 ImageItem.propTypes = {
