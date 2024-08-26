@@ -147,7 +147,7 @@ function Home() {
                                                            state={item.currentState || "compressing"}
                                                            originalSize={formatFileSize(item.imgSize, 1)}
                                                            compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}
-                                                           onDelete={(key) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== key))}
+                                                           onDelete={(id) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== id))}
                                                 />
                                             );
                                         })

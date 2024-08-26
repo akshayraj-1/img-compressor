@@ -17,12 +17,12 @@ function ImageComparison({ beforeImage, afterImage, className }) {
             className={cn("relative overflow-hidden w-full aspect-[21/12] text-secondary text-[0.75rem]", className)}>
 
             <div className="absolute z-[1] size-full overflow-hidden" style={{clipPath: `inset(0 ${100 - currentWidth}% 0 0)`}}>
-                <img className="size-full object-cover object-left" src={beforeImage.src} alt="Before Image"/>
+                <img className="size-full object-cover object-left" fetchPriority="high" src={beforeImage.src} alt="Before Image"/>
                 <span className="absolute bottom-3 left-3 bg-black/40 min-w-14 text-center px-3 py-1 rounded-md transition-opacity ease-in-out duration-300" style={{opacity: labelVisible ? 1 : 0}}>Before: {beforeImage.size}</span>
             </div>
 
             <div className="absolute size-full overflow-hidden">
-                <img className="size-full object-cover object-left" src={afterImage.src} alt="After Image"/>
+                <img className="size-full object-cover object-left" fetchPriority="high" src={afterImage.src} alt="After Image"/>
                 <span className="absolute bottom-3 right-3 bg-black/40 min-w-14 text-center px-3 py-1 rounded-md transition-opacity ease-in-out duration-300" style={{opacity: labelVisible ? 1 : 0}}>After: {afterImage.size}</span>
             </div>
 
@@ -34,11 +34,13 @@ function ImageComparison({ beforeImage, afterImage, className }) {
             />
             <div
                 className="absolute z-[3] top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col justify-center items-center h-full"
-                style={{left: currentWidth+"%"}}>
+                style={{left: currentWidth+"%"}}
+            >
                 <span className="flex-1 w-[2px] bg-secondary/80"></span>
                 <SeparatorVertical
                     className="relative z-[1] rounded-full bg-black/50 border-2 border-secondary p-2"
-                    size={46} strokeWidth={1.5}/>
+                    size={46} strokeWidth={1.5}
+                />
                 <span className="flex-1 w-[2px] bg-secondary/80"></span>
             </div>
         </div>

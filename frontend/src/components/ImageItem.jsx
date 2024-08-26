@@ -76,7 +76,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
                             <Trash2 className="text-textSecondary hover:text-red-500 w-full sm:w-auto cursor-pointer"
                                     size={19}
                                     strokeWidth={1.8}
-                                    onClick={() => onDelete(key)}
+                                    onClick={() => onDelete(id)}
                             />
                         </motion.div>
                     )
