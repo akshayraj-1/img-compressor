@@ -28,5 +28,6 @@ dist-ssr
 .env
 
 # Build directories and files
+frontend/dist
+frontend/.firebase
 backend/*
-backend

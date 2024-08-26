@@ -62,13 +62,13 @@ function Home() {
                 prev?.map(img => {
                     const found = response.data?.images?.find(o => o.original_name === img.imgName && img.currentState === "compressing");
                     if (found && !found.success) {
-                        showToast("Something went wrong", "error");
+                        showToast(found.message || "Something went wrong", "error");
                     }
                     return found ? {
                         ...img,
                         id: found.id,
-                        imgSrc: found.url,
-                        compressedSize: found.compressed_size * 1024,
+                        imgSrc: found.url || img.imgSrc,
+                        compressedSize: found.compressed_size * 1024 || img.imgSize,
                         currentState: found.success ? "compressed" : "failed"
                     } : img;
                 })
