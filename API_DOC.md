@@ -95,7 +95,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "timestamp_randomstring_image1.jpg",
         "compressed_size": 78910,
         "mime_type": "image/jpeg",
-        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=timestamp_randomstring_image1.jpg"
+        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=compressed_image1.jpg"
       },
       {
         "id": "unique-id",
@@ -107,7 +107,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "timestamp_randomstring_image2.png",
         "compressed_size": 43210,
         "mime_type": "image/png",
-        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=timestamp_randomstring_image2.png"
+        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=compressed_image2.png"
       },
       {
         "id": "unique-id",
