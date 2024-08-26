@@ -168,7 +168,8 @@ function Home() {
                 <div
                     className="w-full sm:w-[70vw] max-w-[850px] bg-secondary shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
                     <ImageComparison beforeImage={{src: _sample, size: "1.8MB"}}
-                                     afterImage={{src: _sample_min, size: "420KB"}}/>
+                                     afterImage={{src: _sample_min, size: "420KB"}}
+                    />
                 </div>
             </section>
 
