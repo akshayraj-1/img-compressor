@@ -50,7 +50,7 @@ https://api.igyaanstudios.com/image-compressor/$version/
 
 ```angular2html
 
-<form action="https://api.igyaanstudios.com/image-compressor/v1/" method="POST" enctype="multipart/form-data">
+<form action="https://api.igyaanstudios.com/image-compressor/$version/" method="POST" enctype="multipart/form-data">
     <input type="file" name="files">
     <input type="text" name="quality" value="80">
     <input type="hidden" name="key" value="your_api_key">
@@ -62,7 +62,7 @@ https://api.igyaanstudios.com/image-compressor/$version/
 
 ```angular2html
 
-<form action="https://api.igyaanstudios.com/image-compressor/v1/" method="POST" enctype="multipart/form-data">
+<form action="https://api.igyaanstudios.com/image-compressor/$version/" method="POST" enctype="multipart/form-data">
     <input type="file" name="files" multiple>
     <input type="text" name="quality" value="80">
     <input type="hidden" name="key" value="your_api_key">
@@ -95,7 +95,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "timestamp_randomstring_image1.jpg",
         "compressed_size": 78910,
         "mime_type": "image/jpeg",
-        "url": "https://api.igyaanstudios.com/image-compressor/v1/downloads/?file=timestamp_randomstring_image1.jpg"
+        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=timestamp_randomstring_image1.jpg"
       },
       {
         "id": "unique-id",
@@ -107,7 +107,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "timestamp_randomstring_image2.png",
         "compressed_size": 43210,
         "mime_type": "image/png",
-        "url": "https://api.igyaanstudios.com/image-compressor/v1/downloads/?file=timestamp_randomstring_image2.png"
+        "url": "https://api.igyaanstudios.com/image-compressor/$version/downloads/?file=timestamp_randomstring_image2.png"
       },
       {
         "id": "unique-id",
@@ -177,6 +177,7 @@ The API returns a JSON response containing the status of the request and the det
 
 - Uploaded files are deleted after successful compression.
 - API may change; it's not intended for commercial use.
+- Returned compressed sizes in response are represented in bytes.
 
 If you have any questions or feedback, please feel free
 to [raise an issue](https://github.com/akshayraj-1/ImageCompressor/issues)
