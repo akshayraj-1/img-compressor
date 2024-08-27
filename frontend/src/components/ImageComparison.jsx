@@ -17,12 +17,12 @@ function ImageComparison({ beforeImage, afterImage, className }) {
             className={cn("relative overflow-hidden w-full aspect-[21/12] text-secondary text-[0.75rem]", className)}>
 
             <div className="absolute z-[1] size-full overflow-hidden" style={{clipPath: `inset(0 ${100 - currentWidth}% 0 0)`}}>
-                <img className="size-full object-cover object-left" fetchPriority="high" src={beforeImage.src} alt="Before Image"/>
+                <img className="size-full object-cover object-left" src={beforeImage.src} alt="Before Image"/>
                 <span className="absolute bottom-3 left-3 bg-black/40 min-w-14 text-center px-3 py-1 rounded-md transition-opacity ease-in-out duration-300" style={{opacity: labelVisible ? 1 : 0}}>Before: {beforeImage.size}</span>
             </div>
 
             <div className="absolute size-full overflow-hidden">
-                <img className="size-full object-cover object-left" fetchPriority="high" src={afterImage.src} alt="After Image"/>
+                <img className="size-full object-cover object-left" src={afterImage.src} alt="After Image"/>
                 <span className="absolute bottom-3 right-3 bg-black/40 min-w-14 text-center px-3 py-1 rounded-md transition-opacity ease-in-out duration-300" style={{opacity: labelVisible ? 1 : 0}}>After: {afterImage.size}</span>
             </div>
 
