@@ -160,6 +160,7 @@ function Home() {
                 </section>
             </MainBackground>
 
+            {/* Image Comparison */}
             <section className="flex flex-col gap-3 items-center justify-start size-full px-5 sm:px-8 pt-0 pb-28">
                 <h2 className="text-3xl sm:text-4xl leading-[125%] font-bold text-center">Can you find the
                     difference?</h2>
@@ -172,7 +173,6 @@ function Home() {
                     />
                 </div>
             </section>
-
         </>
     );
 }
