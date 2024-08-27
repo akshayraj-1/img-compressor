@@ -1,13 +1,54 @@
 $branch = git rev-parse --abbrev-ref HEAD
-Write-Host "Current Branch: $branch"
-Write-Host "Do you want to force push? (y/n)"
-$force_push = Read-Host
-git add .
-git commit -m "Auto Update"
+Write-Host "Current branch: $branch"
 
-if ($force_push -eq "y") {
-    git push -u -f origin $branch
-} else {
-    git push -u origin $branch
+# Function to generate a commit message for a file change
+function Generate-CommitMessage {
+    param (
+        [string]$status,
+        [string]$fileName
+    )
+
+    switch ($status) {
+        'A' { return "Added $fileName" }
+        'M' { return "Modified $fileName" }
+        'D' { return "Deleted $fileName" }
+        default { return "Updated $fileName" }
+    }
 }
-Write-Host "Pushed Successfully"
+
+$forcePush = $null
+while ($forcePush -ne 'Y' -and $forcePush -ne 'N') {
+    $forcePush = Read-Host "Do you want to force push to $branch? (Y/N)"
+}
+
+# Get the changed files
+$diffOutput = git diff --name-status HEAD
+if ($diffOutput) {
+    $changes = $diffOutput -split "`n"
+    foreach ($change in $changes) {
+        $status = $change.Substring(0, 1)
+        $filePath = $change.Substring(2).Trim()
+        $fileName = [System.IO.Path]::GetFileName($filePath)
+
+        # Stage the specific file
+        git add $filePath
+
+        # Generate commit message for the file change
+        $commitMessage = Generate-CommitMessage -status $status -fileName $fileName
+        Write-Host "Generated commit message for ${fileName}: $commitMessage"
+
+        # Commit the file with the generated commit message
+        git commit -m $commitMessage
+    }
+
+    # Push the commits
+    if ($forcePush -eq 'Y') {
+        git push origin $branch -f
+    } else {
+        git push origin $branch
+    }
+
+    Write-Host "Git push completed."
+} else {
+    Write-Host "No changes to commit."
+}
