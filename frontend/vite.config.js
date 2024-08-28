@@ -8,5 +8,8 @@ export default defineConfig({
   build: {
     envDir: './',
     envFile: '.env.production',
-  }
+  },
+  server: {
+    port: 3939,
+  },
 })
