@@ -1,8 +1,20 @@
-# imgCompressor (Under Development)
+<h1 style="text-align: center;">ImgCompressor (Under Development)</h1>
+<hr>
 
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 30px 0;">
+<a href="https://imgcompressor-app.web.app">
+<img alt="logo" src="https://imgcompressor-app.web.app/images/logo.svg" width="290px">
+</a>
+<p style="text-align: center;"><i>
 User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.
+</i></p>
+<div style="display: flex; align-items: center; gap: 8px;">
+<a href="https://imgcompressor-app.web.app">Visit Website</a> | 
+<a href="API_DOC.md">API Documentation</a>
+</div>
+</div>
 
-Preview: [https://imgcompressor-app.web.app/](https://imgcompressor-app.web.app/)
+<hr>
 
 ## Features
 
@@ -33,6 +45,7 @@ Follow these steps to set up and run the project locally.
 ### Installation
 
 1. **Clone the repository:**
+
 ```bash
    git clone https://github.com/akshayraj-1/ImageCompressor.git
    cd ImageCompressor
@@ -45,21 +58,24 @@ Follow these steps to set up and run the project locally.
 ```
 
 ### Run the Development Server
+
 Start the development server:
+
 ```bash
    npm run dev
 ```
+
 This will start the app by default locally at http://localhost:3939.
 
 ### Building for Production
+
 To build the project for production, run:
+
 ```bash
    npm run build
 ```
-The output will be in the `dist/` directory, ready to be deployed.
 
-## API Documentation
-[API Documentation](https://github.com/akshayraj-1/ImageCompressor/blob/main/API_DOC.md)
+The output will be in the `dist/` directory, ready to be deployed.
 
 ## License
 
