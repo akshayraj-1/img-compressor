@@ -74,4 +74,4 @@ The output will be in the `dist/` directory, ready to be deployed.
 
 ## License
 
-This project is licensed under the MIT License. See the full license [here](LICENSE).
+This project is licensed under the MIT license.
