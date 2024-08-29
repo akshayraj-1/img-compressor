@@ -1,12 +1,14 @@
 <h1 align="center">ImgCompressor (Under Development)</h1>
 
+<br>
 <p align="center">
 <img alt="logo" src="https://imgcompressor-app.web.app/images/logo.svg" width="290px"/><br>
-<p align="center"><i>User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.</i></p>
+<p align="center"><i>User-friendly app designed to compress images with a single click,<br>making it easier to reduce image file sizes without compromising quality.</i></p>
 <p align="center">
 <a href="https://imgcompressor-app.web.app">Visit Website</a> | 
 <a href="API_DOC.md">API Documentation</a>
 </p>
+<br>
 
 ## Features
 
