@@ -25,6 +25,7 @@ while ($forcePush -ne 'Y' -and $forcePush -ne 'N') {
 $diffOutput = git diff --name-status HEAD
 if ($diffOutput) {
     $changes = $diffOutput -split "`n"
+    Write-Host "============================="
     foreach ($change in $changes) {
         $status = $change.Substring(0, 1)
         $filePath = $change.Substring(2).Trim()
@@ -40,7 +41,7 @@ if ($diffOutput) {
         # Commit the file with the generated commit message
         git commit -m $commitMessage
     }
-
+    Write-Host "============================="
     # Push the commits
     if ($forcePush -eq 'Y') {
         git push origin $branch -f
