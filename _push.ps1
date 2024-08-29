@@ -35,7 +35,7 @@ if ($diffOutput) {
 
         # Generate commit message for the file change
         $commitMessage = Generate-CommitMessage -status $status -fileName $fileName
-        Write-Host "Generated commit message for ${fileName}: $commitMessage"
+        Write-Host "-> Generated commit message for ${fileName}: $commitMessage"
 
         # Commit the file with the generated commit message
         git commit -m $commitMessage
