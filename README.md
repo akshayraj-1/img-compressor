@@ -6,7 +6,7 @@
 <img alt="logo" src="https://imgcompressor-app.web.app/images/logo.svg" width="320px"/><br>
 <p align="center"><i>User-friendly app designed to compress images with a single click,<br>making it easier to reduce image file sizes without compromising quality.</i></p>
 <p align="center">
-<a href="https://imgcompressor-app.web.app">Visit Website</a> | 
+<a href="https://imgcompressor-app.web.app" target="_blank">Visit Website</a> | 
 <a href="API_DOC.md">API Documentation</a>
 </p>
 <br>
