@@ -5,7 +5,7 @@ function Navbar() {
 
     return (
         <nav
-            className="fixed top-0 z-[5] flex justify-between items-center w-full px-5 sm:px-8 py-5 bg-secondary shadow-navBar">
+            className="sticky top-0 z-[5] flex justify-between items-center w-full px-5 sm:px-8 py-5 bg-secondary shadow-navBar">
             <Link to="/">
                 <img className="h-[1.1rem]" src="/images/logo.svg" alt="logo"/>
             </Link>
