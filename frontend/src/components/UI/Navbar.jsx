@@ -10,7 +10,7 @@ function Navbar() {
                 <img className="h-[1.1rem]" src="/images/logo.svg" alt="logo"/>
             </Link>
             <a href="https://github.com/akshayraj-1/ImageCompressor" target="_blank">
-                <img className="h-6 opacity-70 hover:opacity-100 transition-all ease-in duration-300"
+                <img className="h-6"
                      src={_github_icon}
                      alt="github"
                 />
