@@ -1,11 +1,11 @@
-# Image Compression API Documentation
+# [WIP] Image Compression API
 
 ## Base URL
 
-##### `$version = v2`
+<img src="https://img.shields.io/badge/Version-v2-blue.svg?style=flat">
 
 ```angular17svg
-https://api.igyaanstudios.com/image-compressor/$version/
+https://api.igyaanstudios.com/image-compressor/<Version>/
 ```
 
 ## Allowed Methods
@@ -176,6 +176,7 @@ The API returns a JSON response containing the status of the request and the det
 ## Notes
 
 - Uploaded files are deleted after successful compression.
+- Compressed images are automatically deleted after an hour of creation.
 - API may change; it's not intended for commercial use.
 - Returned compressed sizes in response are represented in bytes.
 
