@@ -1,4 +1,4 @@
-<h1 align="center">ImgCompressor (Under Development)</h1>
+# imgCompressor
 
 <br>
 <br>
@@ -6,8 +6,12 @@
 <img alt="logo" src="https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media" width="100%"/><br>
 <p align="center"><i>User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.</i></p>
 <p align="center">
-<a href="https://imgcompressor-app.web.app" target="_blank">View Live Demo</a> | 
-<a href="API_DOC.md">API Documentation</a>
+<a href="https://imgcompressor-app.web.app" target="_blank">
+<img alt="Live Demo" src="https://img.shields.io/badge/View%20Live%20Demo-red?style=flat"/>
+</a>
+<a href="API_DOC.md">
+<img alt="API Docs" src="https://img.shields.io/badge/View%20API%20Docs-blue?style=flat"/>
+</a>
 </p>
 <br>
 
@@ -46,7 +50,7 @@ Follow these steps to set up and run the project locally.
    cd ImageCompressor
 ```
 
-2. **Install dependencies**
+2. **Install dependencies:**
 
 ```bash
    npm install
