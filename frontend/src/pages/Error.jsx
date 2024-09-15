@@ -12,7 +12,7 @@ function Error() {
                 to="/"
                 className="mt-8 px-8 rounded-full"
                 variant="primary"
-                label="Take me home"/>
+                label="Back to Home"/>
         </section>
     );
 }
