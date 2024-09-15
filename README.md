@@ -3,7 +3,10 @@
 <br>
 <br>
 <p align="center">
-<img alt="logo" src="https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media" width="100%"/><br>
+<a href="https://imgcompressor-app.web.app" target="_blank">
+<img alt="logo" src="https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media" width="100%"/>
+</a>
+<br>
 <p align="center"><i>User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.</i></p>
 <p align="center">
 <a href="https://imgcompressor-app.web.app" target="_blank">
