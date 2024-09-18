@@ -1,6 +1,4 @@
 # imgCompressor
-
-<br>
 <br>
 <p align="center">
 <a href="https://imgcompressor-app.web.app" target="_blank">
@@ -16,7 +14,6 @@
 <img alt="API Docs" src="https://img.shields.io/badge/View%20API%20Docs-blue?style=flat"/>
 </a>
 </p>
-<br>
 
 ## Features
 
