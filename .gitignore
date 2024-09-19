@@ -32,6 +32,6 @@ package-lock.json
 
 # Firebase directories and files
 .firebase
-.firebasesrc
+.firebaserc
 firebase.json
 backend/*
