@@ -46,7 +46,7 @@ Follow these steps to set up and run the project locally.
 1. **Clone the repository:**
 
 ```bash
-   git clone https://github.com/akshayraj-1/ImageCompressor.git
+   git clone https://github.com/akshayraj-1/ImgCompressor.git
    cd ImageCompressor
 ```
 
