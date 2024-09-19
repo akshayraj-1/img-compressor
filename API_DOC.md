@@ -181,4 +181,4 @@ The API returns a JSON response containing the status of the request and the det
 - Returned compressed sizes in response are represented in bytes.
 
 If you have any questions or feedback, please feel free
-to [raise an issue](https://github.com/akshayraj-1/ImageCompressor/issues)
+to [raise an issue](https://github.com/akshayraj-1/ImgCompressor/issues)
