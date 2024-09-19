@@ -9,7 +9,7 @@ function Navbar() {
             <Link to="/">
                 <img className="h-[1.1rem]" src="/images/logo.svg" alt="logo"/>
             </Link>
-            <a href="https://github.com/akshayraj-1/ImageCompressor" target="_blank">
+            <a href="https://github.com/akshayraj-1/ImgCompressor" target="_blank">
                 <img className="h-6"
                      src={_github_icon}
                      alt="github"
