@@ -8,7 +8,7 @@
     "author":  "Akshay Raj",
     "repository":  {
                        "type":  "git",
-                       "url":  "https://github.com/akshayraj-1/ImageCompressor.git",
+                       "url":  "https://github.com/akshayraj-1/ImgCompressor.git",
                        "directory":  "frontend",
                        "branch":  "main"
                    },
