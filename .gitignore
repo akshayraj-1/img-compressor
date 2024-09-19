@@ -30,7 +30,7 @@ package-lock.json
 # Environment variables
 .env
 
-# Build directories and files
-frontend/dist
-frontend/.firebase
-backend/*
+# Firebase directories and files
+.firebase
+.firebasesrc
+firebase.json
