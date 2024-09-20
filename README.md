@@ -1,19 +1,10 @@
+![Banner](https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media)
+
 # imgCompressor
-<br>
-<p align="center">
-<a href="https://imgcompressor-app.web.app" target="_blank">
-<img alt="logo" src="https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media" width="100%"/>
-</a>
-<br>
-<p align="center"><i>User-friendly app designed to compress images with a single click, making it easier to reduce image file sizes without compromising quality.</i></p>
-<p align="center">
-<a href="https://imgcompressor-app.web.app" target="_blank">
-<img alt="Live Demo" src="https://img.shields.io/badge/View%20Live%20Demo-red?style=flat"/>
-</a>
-<a href="API_DOC.md">
-<img alt="API Docs" src="https://img.shields.io/badge/View%20API%20Docs-blue?style=flat"/>
-</a>
-</p>
+
+Simple Image Compressor web app for compressing (`png, jpg, jpeg, and gif`) images with a single click without losing much quality. It comes with custom compression API that can be used to compress multiple images at once. See the [API Documentation](API_DOC.md) for more details.
+
+**See Live Demo:** https://imgcompressor-app.web.app
 
 ## Features
 
@@ -23,7 +14,7 @@
 
 ## Stack
 
-- **Frontend:** React (Vite)
+- **Frontend:** React ([Vite](https://vitejs.dev/))
 - **Backend:** PHP (Custom Compressor API)
 
 ## Usage
