@@ -5,7 +5,7 @@
 Simple Image Compressor web app for compressing images in formats such as `PNG, JPG, JPEG, and GIF` with just a single click without losing much quality. The app utilizes a custom compression API that can be used to compress multiple images simultaneously with ease. For more details see the [API Documentation](API_DOC.md).
 
 <a href="https://imgcompressor-app.web.app" target="_blank">
-<img alt="Live Demo" src="https://img.shields.io/badge/See%20Live%20Demo-red?style=flat"/>
+<img alt="Live Demo" src="https://img.shields.io/badge/View%20Live-blue?style=flat"/>
 </a>
 
 ## Features
