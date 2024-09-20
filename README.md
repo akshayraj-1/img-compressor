@@ -4,7 +4,9 @@
 
 Simple Image Compressor web app for compressing (`png, jpg, jpeg, and gif`) images with a single click without losing much quality. It comes with custom compression API that can be used to compress multiple images at once. See the [API Documentation](API_DOC.md) for more details.
 
-**See Live Demo:** https://imgcompressor-app.web.app
+<a href="https://imgcompressor-app.web.app" target="_blank">
+<img alt="Live Demo" src="https://img.shields.io/badge/See%20Live%20Demo-red?style=flat"/>
+</a>
 
 ## Features
 
@@ -23,7 +25,7 @@ Simple Image Compressor web app for compressing (`png, jpg, jpeg, and gif`) imag
 2. **Compress:** Click the compress button to reduce the image size.
 3. **Download:** Save the compressed image(s) to your device.
 
-## Getting Started
+## Quick Start
 
 Follow these steps to set up and run the project locally.
 
@@ -38,7 +40,7 @@ Follow these steps to set up and run the project locally.
 
 ```bash
    git clone https://github.com/akshayraj-1/ImgCompressor.git
-   cd ImageCompressor
+   cd ImgCompressor
 ```
 
 2. **Install dependencies:**
