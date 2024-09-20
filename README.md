@@ -2,7 +2,7 @@
 
 # imgCompressor
 
-Simple Image Compressor web app for compressing (`png, jpg, jpeg, and gif`) images with a single click without losing much quality. It comes with custom compression API that can be used to compress multiple images at once. See the [API Documentation](API_DOC.md) for more details.
+Simple Image Compressor web app for compressing images in formats such as `PNG, JPG, JPEG, and GIF` with just a single click without losing much quality. The app utilizes a custom compression API that can be used to compress multiple images simultaneously with ease. For more details see the [API Documentation](API_DOC.md).
 
 <a href="https://imgcompressor-app.web.app" target="_blank">
 <img alt="Live Demo" src="https://img.shields.io/badge/See%20Live%20Demo-red?style=flat"/>
@@ -14,7 +14,7 @@ Simple Image Compressor web app for compressing (`png, jpg, jpeg, and gif`) imag
 - **High-Quality Retention:** Reduce the size of your images while preserving their original quality.
 - **Batch Processing:** Compress multiple images at once for increased efficiency.
 
-## Stack
+## Technology Stack
 
 - **Frontend:** React ([Vite](https://vitejs.dev/))
 - **Backend:** PHP (Custom Compressor API)
