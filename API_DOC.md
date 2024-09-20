@@ -1,12 +1,24 @@
-# [WIP] Image Compression API
+# Image Compression API
+
+> [!WARNING]
+> This API is currently in work in progress. So be aware that it may change in the future.
+
+Image Compression API built using PHP. It can compress multiple images at once.
+Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applications that requires image uploads and optimizations to improve loading time and reduced bandwidth usage.
+
+
+###  Libraries Used
+- [PNGQuant](https://pngquant.org/) for compressing PNG files
+- [GD Library](https://www.php.net/manual/en/book.gd.php) for processing other image formats
 
 ## Base URL
 
-<img src="https://img.shields.io/badge/Version-v2-blue.svg?style=flat">
+<img src="https://img.shields.io/badge/version-v2-blue.svg?style=flat" alt="Version">
 
 ```angular17svg
-https://api.igyaanstudios.com/image-compressor/<Version>/
+https://api.igyaanstudios.com/image-compressor/:version/
 ```
+_Replace the `:version` with the actual version number you are using._
 
 ## Allowed Methods
 
@@ -15,12 +27,14 @@ https://api.igyaanstudios.com/image-compressor/<Version>/
 
 ## Response Codes
 
-- **200 OK**: Successful request.
-- **400 Bad Request**: Invalid request or missing parameters.
-- **401 Unauthorized**: Invalid API key.
-- **403 Forbidden**: File size limits exceeded.
-- **415 Unsupported Media Type**: Unsupported file type.
-- **500 Internal Server Error**: Processing error.
+| Status Code                 | Description                             |
+|----------------------------	|----------------------------------------	|
+| 200 OK                     	| Successful request.                    	|
+| 400 Bad Request            	| Invalid request or missing parameters. 	|
+| 401 Unauthorized           	| Invalid API key.                       	|
+| 403 Forbidden              	| File size limits exceeded.             	|
+| 415 Unsupported Media Type 	| Unsupported Media Type.                	|
+| 500 Internal Server Error  	| Processing error                       	|
 
 ## POST Request
 
@@ -69,12 +83,14 @@ https://api.igyaanstudios.com/image-compressor/<Version>/
     <button type="submit">Upload & Compress</button>
 </form>
 ```
+_Alternatively, you can test the API using tools like Postman or cURL._
 
 ## Response Examples
 
 The API returns a JSON response containing the status of the request and the details of the compressed images.
 
 ### Success Response
+
 
 **HTTP Status Code: 200 OK**
 
