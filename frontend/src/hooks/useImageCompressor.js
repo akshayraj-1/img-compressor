@@ -6,13 +6,13 @@ function useImageCompressor() {
     const API_URL = import.meta.env.VITE_COMPRESSOR_API_URL;
     const API_KEY = import.meta.env.VITE_COMPRESSOR_API_KEY;
 
-    const compress = async (files, quality = 70, onProgress = () => {}) => {
+    const compress = async (files = [], quality = 70, onProgress = () => {}) => {
         try {
             const formData = new FormData();
             formData.append("key", API_KEY);
             formData.append("quality", quality);
 
-            [...files].forEach((file, idx) => {
+            files.forEach((file, idx) => {
                 formData.append(`files[${idx}]`, file);
             });
 
@@ -27,7 +27,7 @@ function useImageCompressor() {
                         onProgress(percentCompleted);
                     },
                 });
-            return await response.data;
+            return await response?.data || { success: false };
         } catch (e) {
             console.log(e.message);
             return e.response && e.response.data ? e.response.data : { success: false };
