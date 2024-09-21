@@ -67,14 +67,23 @@ if ($diffOutput) {
     Write-Host "Pushing commits to branch: $branch"
     if ($forcePush -eq 'Y') {
         git push origin $branch -f
-        Write-Host "Force pushed to $branch."
     } else {
         git push origin $branch
-        Write-Host "Pushed to $branch."
+    }
+
+    # Check the exit status of the push command
+    if ($LASTEXITCODE -eq 0) {
+        if ($forcePush -eq 'Y') {
+            Write-Host "Force pushed to $branch."
+        } else {
+            Write-Host "Pushed to $branch."
+        }
+    } else {
+        Write-Host "Push to $branch failed. Please check for errors."
     }
 
     Write-Host "-----------------------------"
-    Write-Host "Git push completed."
+    Write-Host "Git push process completed."
 } else {
     Write-Host "No changes to commit."
 }
