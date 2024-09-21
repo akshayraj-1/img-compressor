@@ -1,9 +1,9 @@
 # Image Compression API
 
 > [!WARNING]
-> This API is currently in work in progress. So be aware that it may change in the future.
+> This API is currently a work in progress project. So be aware that it may change in the future.
 
-Image Compression API built using PHP. It can compress multiple images at once.
+Image Compression API built with PHP for compressing multiple images at once.
 Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applications that requires image uploads and optimizations to improve loading time and reduced bandwidth usage.
 
 
@@ -24,17 +24,6 @@ _Replace the `:version` with the actual version number you are using._
 
 - **POST**: Upload and compress images.
 - **OPTIONS**: Pre-flight request for CORS.
-
-## Response Codes
-
-| Status Code                 | Description                             |
-|----------------------------	|----------------------------------------	|
-| 200 OK                     	| Successful request.                    	|
-| 400 Bad Request            	| Invalid request or missing parameters. 	|
-| 401 Unauthorized           	| Invalid API key.                       	|
-| 403 Forbidden              	| File size limits exceeded.             	|
-| 415 Unsupported Media Type 	| Unsupported Media Type.                	|
-| 500 Internal Server Error  	| Processing error                       	|
 
 ## POST Request
 
@@ -84,6 +73,19 @@ _Replace the `:version` with the actual version number you are using._
 </form>
 ```
 _Alternatively, you can test the API using tools like Postman or cURL._
+
+
+## Response Codes
+
+| Status Code                 | Description                             |
+|----------------------------	|----------------------------------------	|
+| 200 OK                     	| Successful request.                    	|
+| 400 Bad Request            	| Invalid request or missing parameters. 	|
+| 401 Unauthorized           	| Invalid API key.                       	|
+| 403 Forbidden              	| File size limits exceeded.             	|
+| 415 Unsupported Media Type 	| Unsupported Media Type.                	|
+| 500 Internal Server Error  	| Processing error                       	|
+
 
 ## Response Examples
 
