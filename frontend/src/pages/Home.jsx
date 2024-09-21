@@ -15,6 +15,8 @@ import _picker_icon from "../assets/images/_picker_icon.svg";
 
 function Home() {
 
+    const MAX_FILE_COUNT = 30;
+    const MAX_FILE_SIZE = 15728640;
     const inputRef = useRef(null);
     const [compressionQueue, setCompressionQueue] = useState([]);
     const [isDragging, setIsDragging] = useState(false);
@@ -22,12 +24,28 @@ function Home() {
     const {CustomToastModal, showToast} = useCustomToast();
     const {compress} = useImageCompressor();
 
+    const updateCompressionQueue = (imgName, oldState, newState, updatedFields = {}) => {
+        setCompressionQueue(prevState => {
+            return prevState.map(file => {
+                if (file.imgName === imgName && file.currentState === oldState) {
+                    return { ...file, currentState: newState, ...updatedFields };
+                } else {
+                    return file;
+                }
+            });
+        });
+    };
+
     const uploadImagesForCompression = async (files) => {
-        if (!files || files.length > 30) {
+        if (!files || files.length > MAX_FILE_COUNT) {
             showToast("Please select less than 30 images", "error");
             return;
         }
         const currentBatch = files.map(file => {
+            if (file.size > MAX_FILE_SIZE) {
+                showToast("Please select less than 15MB images", "error");
+                return null;
+            }
             return {
                 id: (Date.now() + Math.round(Math.random() * 1000)).toString(),
                 imgSrc: URL.createObjectURL(file),
@@ -35,44 +53,39 @@ function Home() {
                 imgSize: file.size,
                 currentState: "uploading"
             };
-        });
+        }).filter(Boolean);
+
+        if (currentBatch.length < files.length) return;
 
         setCompressionQueue(prev => [...currentBatch, ...prev]);
 
         const response = await compress(files, 20, (progress) => {
             if (progress >= 100) {
-                setCompressionQueue(prev =>
-                    prev?.map(img => currentBatch.find(o => o.imgName === img.imgName && img.currentState === "uploading")
-                            ? { ...img, currentState: "compressing" }
-                            : img
-                    )
-                );
+                currentBatch.forEach(file => {
+                    updateCompressionQueue(file.imgName, "uploading", "compressing");
+                });
             }
         });
-        if (!response || !response.success) {
-            setCompressionQueue(prev =>
-                prev?.map(img => currentBatch.find(o => o.imgName === img.imgName)
-                        ? { ...img, currentState: "failed" }
-                        : img
-                )
-            );
-            showToast(response?.data?.message || "Something went wrong", "error");
+
+        if (!response || !response.success || !response.data) {
+            currentBatch.forEach(file => {
+                updateCompressionQueue(file.imgName, "compressing", "failed");
+            });
+            return showToast(response?.message || "Something went wrong", "error");
         } else {
-            setCompressionQueue(prev =>
-                prev?.map(img => {
-                    const found = response.data?.images?.find(o => o.original_name === img.imgName && img.currentState === "compressing");
-                    if (found && !found.success) {
-                        showToast(found.message || "Something went wrong", "error");
-                    }
-                    return found ? {
-                        ...img,
-                        id: found.id,
-                        imgSrc: found.url || img.imgSrc,
-                        compressedSize: found.compressed_size * 1024 || img.imgSize,
-                        currentState: found.success ? "compressed" : "failed"
-                    } : img;
-                })
-            );
+            response.data.images.forEach(file => {
+                const foundFile = currentBatch.find(f => f.imgName === file.original_name);
+                if (!foundFile) return;
+                if (file.success) {
+                    updateCompressionQueue(foundFile.imgName, "compressing", "compressed", {
+                        id: file.id,
+                        url: file.url,
+                        compressedSize: file.compressed_size * 1024
+                    });
+                } else {
+                    updateCompressionQueue(foundFile.imgName, "compressing", "failed");
+                }
+            })
         }
     };
 
@@ -147,6 +160,7 @@ function Home() {
                                                            state={item.currentState || "compressing"}
                                                            originalSize={formatFileSize(item.imgSize, 1)}
                                                            compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}
+                                                           downloadUrl={item?.url}
                                                            onDelete={(id) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== id))}
                                                 />
                                             );
