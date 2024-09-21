@@ -1,6 +1,6 @@
-![Banner](https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media)
-
 # imgCompressor
+
+![Banner](https://firebasestorage.googleapis.com/v0/b/imgcompressor-app.appspot.com/o/public%2Freadme_banner.png?alt=media)
 
 Simple Image Compressor web app for compressing images in formats such as `PNG, JPG, JPEG, and GIF` without losing much quality. The app uses a compression API that can be used to compress multiple images simultaneously with ease. For more details see the [API Documentation](API_DOC.md).
 
