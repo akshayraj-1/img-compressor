@@ -39,7 +39,7 @@ const variants = {
 }
 
 // eslint-disable-next-line react/display-name
-const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, originalSize, compressedSize, onDelete}) => {
+const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, originalSize, compressedSize, downloadUrl, onDelete}) => {
 
     const [currentState, setCurrentState] = useState(state);
     const [isImageLoading, setIsImageLoading] = useState(true);
@@ -67,7 +67,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
             {
                 currentState === "compressed" ? (
                         <motion.div variants={variants.currentSate} initial={"initial"} animate={"animate"} className="flex items-center justify-end gap-4">
-                            <a href={imageSrc} download={title}>
+                            <a href={downloadUrl} download={title}>
                                 <DownloadCloud className="bg-button text-white p-2 sm:p-1.5 w-8 sm:w-14 rounded-full cursor-pointer"
                                                size={30}
                                                strokeWidth={1.8}
@@ -99,6 +99,7 @@ ImageItem.propTypes = {
     title: PropTypes.string.isRequired,
     originalSize: PropTypes.string.isRequired,
     compressedSize: PropTypes.string,
+    downloadUrl: PropTypes.string,
     onDelete: PropTypes.func.isRequired
 };
 
