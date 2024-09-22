@@ -9,9 +9,9 @@ import Button from "../components/UI/Button.jsx";
 import ImageComparison from "../components/ImageComparison.jsx";
 import MainBackground from "../components/Backgrouds/MainBackground.jsx";
 import ImageItem from "../components/ImageItem.jsx";
-import _sample from "../assets/images/_sample.jpg";
-import _sample_min from "../assets/images/_sample_min.jpg";
-import _picker_icon from "../assets/images/_picker_icon.svg";
+import img_sample from "../assets/images/img_sample.jpg";
+import img_sample_min from "../assets/images/img_sample_min.jpg";
+import img_picker_icon from "../assets/images/img_picker_icon.svg";
 
 function Home() {
 
@@ -131,7 +131,7 @@ function Home() {
                         onDragLeave={() => setIsDragging(false)}
                     >
                         <div className="flex flex-col justify-center items-center gap-3.5">
-                            <img src={_picker_icon} alt="" className="size-32"/>
+                            <img src={img_picker_icon} alt="" className="size-32"/>
                             <input ref={inputRef} type="file" accept="image/jpg, image/jpeg, image/png, image/gif"
                                    hidden
                                    multiple={true} onInput={handleImageSelection}/>
@@ -182,8 +182,8 @@ function Home() {
                     image size without losing image quality</p>
                 <div
                     className="w-full sm:w-[70vw] max-w-[850px] bg-secondary shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
-                    <ImageComparison beforeImage={{src: _sample, size: "1.8MB"}}
-                                     afterImage={{src: _sample_min, size: "420KB"}}
+                    <ImageComparison beforeImage={{src: img_sample, size: "1.8MB"}}
+                                     afterImage={{src: img_sample_min, size: "420KB"}}
                     />
                 </div>
             </section>
