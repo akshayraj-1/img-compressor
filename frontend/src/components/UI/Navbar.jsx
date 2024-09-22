@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import _github_icon from "../../assets/images/_github_icon.svg";
+import img_github_icon from "../../assets/images/img_github_icon.svg";
 
 function Navbar() {
 
@@ -11,7 +11,7 @@ function Navbar() {
             </Link>
             <a href="https://github.com/akshayraj-1/ImgCompressor" target="_blank">
                 <img className="h-6"
-                     src={_github_icon}
+                     src={img_github_icon}
                      alt="github"
                 />
             </a>
