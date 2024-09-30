@@ -27,10 +27,10 @@ function ImageComparison({ beforeImage, afterImage, className }) {
             </div>
 
             <input className="absolute z-[4] w-full h-full bg-transparent opacity-0 cursor-col-resize"
+                   type="range" min={0} max={100}
                    onChange={handleChange}
                    onMouseEnter={() => setLabelVisible(true)}
                    onMouseLeave={() => setLabelVisible(false)}
-                   type="range" min={0} max={100}
             />
             <div
                 className="absolute z-[3] top-1/2 -translate-y-1/2 -translate-x-1/2 flex flex-col justify-center items-center h-full"
