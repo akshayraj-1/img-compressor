@@ -33,17 +33,21 @@ _Replace the `:version` with the actual version number you are using._
 
 ### Parameters
 
-1. **`key`** (required):
-    - **Type**: `String`
-    - **Description**: API key for authentication.
+| Parameter | Required | Type                   | Description                                                    |
+|-----------|----------|------------------------|----------------------------------------------------------------|
+| `key`     | Yes      | `String`               | API key used for authentication.                               |
+| `files`   | Yes      | `File \| File[]`       | Image(s) to upload and compress. Supports PNG, JPG, JPEG, GIF. | Images to upload and compress. Supports PNG, JPG, JPEG, GIF. |
+| `quality` | No       | `Integer \| Integer[]` | Compression quality (range: 1-100). Default value is `75`.     | Compression quality (1-100). Default is `75`. |
 
-2. **`files`** (required):
-    - **Type**: `File | File[]`
-    - **Description**: Images to upload and compress. Supports PNG, JPG, JPEG, GIF.
 
-3. **`quality`** (optional):
-    - **Type**: `Integer | Integer[]`
-    - **Description**: Compression quality (1-100). Default is `75`.
+### Public API Key
+```json
+mSW0LMB5Pj4pNWWiRGfHL89KYdzrdWNM
+```
+
+> [!NOTE]
+> The Public API key is only for testing purposes. Please do not use it in production.
+
 
 ### File Constraints
 
@@ -81,14 +85,14 @@ _Alternatively, you can test the API using tools like Postman or cURL._
 
 ## Response Codes
 
-| Status Code                 | Description                             |
-|----------------------------	|----------------------------------------	|
-| 200 OK                     	| Successful request.                    	|
-| 400 Bad Request            	| Invalid request or missing parameters. 	|
-| 401 Unauthorized           	| Invalid API key.                       	|
-| 403 Forbidden              	| File size limits exceeded.             	|
-| 415 Unsupported Media Type 	| Unsupported Media Type.                	|
-| 500 Internal Server Error  	| Processing error                       	|
+| Status Code                  | Description                              |
+|------------------------------|------------------------------------------|
+| 200 OK                     	 | Successful request.                    	 |
+| 400 Bad Request            	 | Invalid request or missing parameters. 	 |
+| 401 Unauthorized           	 | Invalid API key.                       	 |
+| 403 Forbidden              	 | File size limits exceeded.             	 |
+| 415 Unsupported Media Type 	 | Unsupported Media Type.                	 |
+| 500 Internal Server Error  	 | Processing error                       	 |
 
 
 ## Response Examples
