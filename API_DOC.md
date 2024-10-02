@@ -57,24 +57,24 @@ _The Public API key is only for `testing purposes`. Please do not use it in prod
 
 ### Single File Upload:
 
-```angular2html
+```html
 
 <form action="https://api.igyaanstudios.com/image-compressor/$version/" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files">
-    <input type="text" name="quality" value="80">
-    <input type="hidden" name="key" value="your_api_key">
+    <input type="file" name="files"/>
+    <input type="text" name="quality" value="80"/>
+    <input type="hidden" name="key" value="your_api_key"/>
     <button type="submit">Upload & Compress</button>
 </form>
 ```
 
 ### Multiple File Upload:
 
-```angular2html
+```html
 
 <form action="https://api.igyaanstudios.com/image-compressor/$version/" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files" multiple>
-    <input type="text" name="quality" value="80">
-    <input type="hidden" name="key" value="your_api_key">
+    <input type="file" name="files" multiple/>
+    <input type="text" name="quality" value="80"/>
+    <input type="hidden" name="key" value="your_api_key"/>
     <button type="submit">Upload & Compress</button>
 </form>
 ```
