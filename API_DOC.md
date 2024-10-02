@@ -11,6 +11,10 @@ Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applic
 - [PNGQuant](https://pngquant.org/) for compressing PNG files
 - [GD Library](https://www.php.net/manual/en/book.gd.php) for processing other image formats
 
+<hr>
+
+**You can try it out using the live demo below.**
+
 ## Base URL
 
 <img src="https://img.shields.io/badge/version-v2-blue.svg?style=flat" alt="Version">
