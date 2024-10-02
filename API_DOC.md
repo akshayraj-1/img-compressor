@@ -41,12 +41,10 @@ _Replace the `:version` with the actual version number you are using._
 
 
 ### Public API Key
-```json
+```js
 mSW0LMB5Pj4pNWWiRGfHL89KYdzrdWNM
 ```
-
-> [!NOTE]
-> The Public API key is only for testing purposes. Please do not use it in production.
+_The Public API key is only for `testing purposes`. Please do not use it in production._
 
 
 ### File Constraints
