@@ -35,8 +35,8 @@ function useCustomToast() {
 
     const styles = {
         parent: cn("absolute z-[50] bottom-5 sm:bottom-10 flex justify-center w-screen px-5 select-none"),
-        body: cn("relative flex gap-2 items-center bg-secondary w-full sm:w-fit px-5 py-3 rounded-md shadow-md", toastType === "error" ? "bg-red-500" : "bg-green-500"),
-        message: cn("sm:text-[0.8rem] text-sm", toastType === "error" || toastType === "success" ? "text-white" : "text-accent"),
+        body: cn("relative flex gap-2 items-center bg-surface w-full sm:w-fit px-5 py-3 rounded-md shadow-md", toastType === "error" ? "bg-red-500" : "bg-green-500"),
+        message: cn("sm:text-[0.8rem] text-sm", toastType === "error" || toastType === "success" ? "text-white" : "text-primary"),
     };
 
     useEffect(() => {
