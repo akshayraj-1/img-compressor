@@ -115,15 +115,15 @@ function Home() {
                 <section
                     className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
                     <h1 className="text-center text-[2.3rem] sm:text-[2.6rem] leading-[125%] font-bold">
-                        <span className="text-accent">Online</span> Image Compressor
+                        <span className="text-primary">Online</span> Image Compressor
                     </h1>
                     <p className="text-textSecondary text-center text-sm sm:text-base sm:mx-6 sm:text-center">
                         Compress images with a single click, reduce image size without losing image quality.
                     </p>
                     <div
-                        className={cn("relative bg-secondary rounded-xl shadow-mainCard px-8 py-9 mt-8 border-2 " +
+                        className={cn("relative bg-surface rounded-xl shadow-mainCard px-8 py-9 mt-8 border-2 " +
                             "border-textSecondary/30 border-dashed w-full sm:w-[70vw] max-w-[850px] overflow-hidden",
-                            isDragging && "border-accentLight/60")}
+                            isDragging && "border--primaryLight/60")}
                         onDrop={handleImageDrop}
                         onDragOver={e => e.preventDefault() && setIsDragging(true)}
                         onDragEnter={() => setIsDragging(true)}
@@ -147,7 +147,7 @@ function Home() {
                     {
                         compressionQueue?.length > 0 && (
                             <div
-                                className="w-full sm:w-[70vw] max-w-[850px] mt-3 mb-28 py-4 rounded-xl bg-secondary shadow-mainCard">
+                                className="w-full sm:w-[70vw] max-w-[850px] mt-3 mb-28 py-4 rounded-xl bg-surface shadow-mainCard">
                                 <div id="image-list"
                                      className="flex flex-col gap-3.5 size-full max-h-[60vh] overflow-y-scroll">
                                     {
@@ -181,7 +181,7 @@ function Home() {
                 <p className="text-textSecondary text-center sm:max-w-[60vw]">With seamless compression, you can reduce
                     image size without losing image quality</p>
                 <div
-                    className="w-full sm:w-[70vw] max-w-[850px] bg-secondary shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
+                    className="w-full sm:w-[70vw] max-w-[850px] bg-surface shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
                     <ImageComparison beforeImage={{src: img_sample, size: "1.8MB"}}
                                      afterImage={{src: img_sample_min, size: "420KB"}}
                     />
