@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const buttonStyles = {
     base: "flex items-center justify-center gap-2 text-sm sm:text-base font-normal",
     primary: "bg-button rounded-full px-6 py-2.5 shadow-primaryButton text-white",
-    tertiary: "bg-transparent border border-accent rounded-lg px-4 py-2 text-accent hover:bg-button hover:text-white transition",
+    tertiary: "bg-transparent border border-primary rounded-lg px-4 py-2 text-primary hover:bg-button hover:text-white transition",
 };
 
 function Button({ type = "button", variant = "primary", icon, label, className, target, onClick }) {
