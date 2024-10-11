@@ -8,13 +8,13 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#fff",
-                secondary: "#fcfcff",
-                footer: "#f5f5f8",
+                primary: "#407BFF",
+                primaryLight: "#60a7f9",
+                background: "#fff",
+                surface: "#fcfcff",
+                surfaceVariant: "#f5f5f8",
                 textPrimary: "#263238",
-                textSecondary: "#8f9ba4",
-                accent: "#407BFF",
-                accentLight: "#60a7f9",
+                textSecondary: "#8f9ba4"
             },
             backgroundImage: {
                 mainBg: `url("${ImageData.mainBg}")`,
