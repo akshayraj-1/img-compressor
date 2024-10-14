@@ -20,7 +20,7 @@ Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applic
 <img src="https://img.shields.io/badge/version-v2-blue.svg?style=flat" alt="Version">
 
 ```angular17svg
-https://api.igyaanstudios.com/image-compressor/:version/
+https://api.akshayraj.io/image-compressor/:version/
 ```
 _Replace the `:version` with the actual version number you are using._
 
@@ -59,7 +59,7 @@ _The Public API key is only for `testing purposes`. Please do not use it in prod
 
 ```html
 
-<form action="https://api.igyaanstudios.com/image-compressor/:version/" method="POST" enctype="multipart/form-data">
+<form action="https://api.akshayraj.io/image-compressor/:version/" method="POST" enctype="multipart/form-data">
     <input type="file" name="files"/>
     <input type="text" name="quality" value="80"/>
     <input type="hidden" name="key" value="your_api_key"/>
@@ -71,7 +71,7 @@ _The Public API key is only for `testing purposes`. Please do not use it in prod
 
 ```html
 
-<form action="https://api.igyaanstudios.com/image-compressor/:version/" method="POST" enctype="multipart/form-data">
+<form action="https://api.akshayraj.io/image-compressor/:version/" method="POST" enctype="multipart/form-data">
     <input type="file" name="files" multiple/>
     <input type="text" name="quality" value="80"/>
     <input type="hidden" name="key" value="your_api_key"/>
@@ -119,7 +119,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "compressed_image1.jpg",
         "compressed_size": 78910,
         "mime_type": "image/jpeg",
-        "url": "https://api.igyaanstudios.com/image-compressor/:version/downloads/?file=compressed_image1.jpg"
+        "url": "https://api.akshayraj.io/image-compressor/:version/downloads/?file=compressed_image1.jpg"
       },
       {
         "id": "unique-id",
@@ -131,7 +131,7 @@ The API returns a JSON response containing the status of the request and the det
         "compressed_name": "compressed_image2.png",
         "compressed_size": 43210,
         "mime_type": "image/png",
-        "url": "https://api.igyaanstudios.com/image-compressor/:version/downloads/?file=compressed_image2.png"
+        "url": "https://api.akshayraj.io/image-compressor/:version/downloads/?file=compressed_image2.png"
       },
       {
         "id": "unique-id",
@@ -153,6 +153,8 @@ The API returns a JSON response containing the status of the request and the det
 }
 
 ```
+
+_Original size and compressed size are in bytes_
 
 ## Error Responses
 
