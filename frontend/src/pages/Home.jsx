@@ -158,7 +158,7 @@ function Home() {
                                                            imageSrc={item.imgSrc}
                                                            title={item.imgName}
                                                            state={item.currentState || "compressing"}
-                                                           originalSize={formatFileSize(item.imgSize, 1)}
+                                                           originalSize={formatFileSize(item.imgSize / 1024, 1)}
                                                            compressedSize={item.compressedSize && formatFileSize(item.compressedSize, 1)}
                                                            downloadUrl={item?.url}
                                                            onDelete={(id) => setCompressionQueue(prev => prev.filter((obj) => obj.id !== id))}
