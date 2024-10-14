@@ -80,7 +80,7 @@ function Home() {
                     updateCompressionQueue(foundFile.imgName, "compressing", "compressed", {
                         id: file.id,
                         url: file.url,
-                        compressedSize: file.compressed_size * 1024
+                        compressedSize: file.compressed_size / 1024
                     });
                 } else {
                     updateCompressionQueue(foundFile.imgName, "compressing", "failed");
