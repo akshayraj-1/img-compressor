@@ -35,3 +35,4 @@ package-lock.json
 .firebaserc
 firebase.json
 backend/*
+backend
