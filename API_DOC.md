@@ -142,7 +142,7 @@ The API returns a JSON response containing the status of the request and the det
         "original_size": 789777,
         "compressed_name": null,
         "compressed_size": null,
-        "mime_type": "image/gif",
+        "mime_type": "image/x-icon",
         "url": null
       }
     ],
