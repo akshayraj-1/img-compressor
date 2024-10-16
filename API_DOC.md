@@ -12,12 +12,12 @@ Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applic
 
 ## Base URL
 
-<img src="https://img.shields.io/badge/version-v2-blue.svg?style=flat" alt="Version">
+<img src="https://img.shields.io/badge/current%20version-v2-blue.svg?style=flat" alt="Version">
 
 ```angular17svg
 https://api.akshayraj.io/image-compressor/:version/
 ```
-_Replace the `:version` with the actual version number you are using._
+_Replace the `:version` with the actual version number you are using for e.g. `https://api.akshayraj.io/image-compressor/v2`._
 
 ## Allowed Methods
 
