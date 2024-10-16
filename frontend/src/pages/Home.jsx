@@ -123,9 +123,12 @@ function Home() {
                     <div
                         className={cn("relative bg-surface rounded-xl shadow-mainCard px-8 py-9 mt-8 border-2 " +
                             "border-textSecondary/30 border-dashed w-full sm:w-[70vw] max-w-[850px] overflow-hidden",
-                            isDragging && "border--primaryLight/60")}
+                            isDragging && "border-primaryLight/60")}
                         onDrop={handleImageDrop}
-                        onDragOver={e => e.preventDefault() && setIsDragging(true)}
+                        onDragOver={e => {
+                            e.preventDefault();
+                            setIsDragging(true);
+                        }}
                         onDragEnter={() => setIsDragging(true)}
                         onDragExit={() => setIsDragging(false)}
                         onDragLeave={() => setIsDragging(false)}
