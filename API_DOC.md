@@ -104,6 +104,10 @@ The API returns a JSON response containing the status of the request and the det
   "status_code": 200,
   "message": "Success",
   "data": {
+    "total_count": 3,
+    "total_success": 2,
+    "total_original_size": 777687,
+    "total_compressed_size": 122120,
     "images": [
       {
         "id": "unique-id",
@@ -141,11 +145,7 @@ The API returns a JSON response containing the status of the request and the det
         "mime_type": "image/x-icon",
         "url": null
       }
-    ],
-    "total_count": 3,
-    "total_success": 2,
-    "total_original_size": 777687,
-    "total_compressed_size": 122120
+    ]
   }
 }
 
