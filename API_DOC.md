@@ -143,7 +143,8 @@ The API returns a JSON response containing the status of the request and the det
       }
     ],
     "total_count": 3,
-    "total_original_size": 1567554,
+    "total_success": 2,
+    "total_original_size": 777687,
     "total_compressed_size": 122120
   }
 }
