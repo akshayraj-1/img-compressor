@@ -78,14 +78,15 @@ _Alternatively, you can test the API using tools like Postman or cURL._
 
 ## Response Codes
 
-| Status Code                  | Description                               |
-|------------------------------|-------------------------------------------|
-| 200 OK                     	 | Successful request.                    	  |
-| 400 Bad Request            	 | Invalid request or missing parameters. 	  |
-| 401 Unauthorized           	 | Invalid API key.                       	  |
-| 403 Forbidden              	 | File size limits exceeded.             	  |
-| 415 Unsupported Media Type 	 | Unsupported Media Type.                	  |
-| 500 Internal Server Error  	 | Processing error.                       	 |
+| Status Code                  | Description                                 |
+|------------------------------|---------------------------------------------|
+| 200 OK                     	 | Successful request.                    	    |
+| 400 Bad Request            	 | Invalid request or missing parameters. 	    |
+| 401 Unauthorized           	 | Invalid API key.                       	    |
+| 403 Forbidden              	 | File size limits exceeded.             	    |
+| 405 Method Not Allowed       | Invalid request method.                   	 |
+| 415 Unsupported Media Type 	 | Unsupported Media Type.                	    |
+| 500 Internal Server Error  	 | Processing error.                       	   |
 
 
 ## Response Examples
