@@ -45,7 +45,7 @@ _The Public API key is only for `testing purposes`. Please do not use it in prod
 ### File Constraints
 
 - **Max Total Size**: 250 MB
-- **Max File Size**: 15 MB per file
+- **Max File Size**: 16 MB per file
 - **Max Files Count**: 30 files
 
 ## Request Examples
@@ -78,14 +78,14 @@ _Alternatively, you can test the API using tools like Postman or cURL._
 
 ## Response Codes
 
-| Status Code                  | Description                              |
-|------------------------------|------------------------------------------|
-| 200 OK                     	 | Successful request.                    	 |
-| 400 Bad Request            	 | Invalid request or missing parameters. 	 |
-| 401 Unauthorized           	 | Invalid API key.                       	 |
-| 403 Forbidden              	 | File size limits exceeded.             	 |
-| 415 Unsupported Media Type 	 | Unsupported Media Type.                	 |
-| 500 Internal Server Error  	 | Processing error                       	 |
+| Status Code                  | Description                               |
+|------------------------------|-------------------------------------------|
+| 200 OK                     	 | Successful request.                    	  |
+| 400 Bad Request            	 | Invalid request or missing parameters. 	  |
+| 401 Unauthorized           	 | Invalid API key.                       	  |
+| 403 Forbidden              	 | File size limits exceeded.             	  |
+| 415 Unsupported Media Type 	 | Unsupported Media Type.                	  |
+| 500 Internal Server Error  	 | Processing error.                       	 |
 
 
 ## Response Examples
@@ -149,7 +149,7 @@ The API returns a JSON response containing the status of the request and the det
 
 ```
 
-_Original size and compressed size are in bytes_
+_Original and compressed sizes are in bytes_
 
 ## Error Responses
 
@@ -179,8 +179,9 @@ _Original size and compressed size are in bytes_
 {
   "success": false,
   "status_code": 403,
-  "message": "Total file size limit is exceeded: [size => 52000000, limit => 250000000]"
+  "message": "Total file size limit exceeded: 272154800"
 }
+
 
 ```
 
@@ -189,9 +190,10 @@ _Original size and compressed size are in bytes_
 ```json
 {
   "success": false,
-  "status_code": 400,
-  "message": "File size limit exceeded: [file => image1.jpg, size => 20000000, limit => 10000000]"
+  "status_code": 403,
+  "message": "File too large: image1.jpg"
 }
+
 ```
 
 ## Notes
