@@ -5,8 +5,8 @@ function Error() {
     return (
         <section className="flex flex-col gap-2 justify-center items-center size-full min-h-screen px-5 sm:px-8">
             <object data={img_404} className="h-[52vh] w-full"/>
-            <p className="text-xl sm:text-3xl font-bold mt-4">Page Not Found</p>
-            <span className="text-textSecondary text-sm sm:text-base text-center mx-6">Oops! The page you are looking for does not exist</span>
+            <p className="text-2xl sm:text-3xl font-bold mt-4">Page Not Found</p>
+            <span className="text-textSecondary text-[0.9rem] sm:text-base text-center mx-6">Oops! The page you are looking for does not exist</span>
             <Button
                 type="link"
                 to="/"
