@@ -1,15 +1,28 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import {defineConfig} from "vite"
+import react from "@vitejs/plugin-react"
 
 export default defineConfig({
-  plugins: [react()],
-  envDir: './',
-  envFiles: ['.env.development'],
-  build: {
+    plugins: [react()],
+    build: {
+        minify: "terser",
+        terserOptions: {
+            compress: {
+                drop_console: true,
+            }
+        },
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    vendor: ['react', 'react-dom']
+                }
+            }
+        },
+        envDir: './',
+        envFile: '.env.production',
+    },
     envDir: './',
-    envFile: '.env.production',
-  },
-  server: {
-    port: 3939,
-  },
+    envFiles: ['.env.development'],
+    server: {
+        port: 3939,
+    },
 })
