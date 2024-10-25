@@ -1,8 +1,8 @@
-import './main.scss';
-import ReactDOM from 'react-dom/client';
+import "./main.scss";
+import ReactDOM from "react-dom/client";
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 
-import App from './App.jsx';
+import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import Error from "./pages/Error.jsx";
 
