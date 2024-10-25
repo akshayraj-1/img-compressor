@@ -3,7 +3,7 @@ import {version} from "../../../package.json";
 
 function Footer() {
     return (
-        <footer className="flex flex-col items-center justify-center gap-2 w-screen px-5 sm:px-8 py-10 bg-surfaceVariant">
+        <footer className="flex flex-col items-center justify-center gap-2 w-screen px-5 sm:px-8 py-10 bg-surfaceSecondary">
             <Link to="/">
                 <img className="h-5" src="/images/logo-grayscale.svg" alt="logo"/>
             </Link>
