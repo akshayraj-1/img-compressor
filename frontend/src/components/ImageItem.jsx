@@ -60,9 +60,9 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
             </div>
             <div className="flex flex-col gap-1 flex-1">
                 <span
-                    className="font-medium text-[0.8rem] sm:text-[0.9rem] overflow-ellipsis line-clamp-2 break-all">{title}</span>
-                <span className="font-normal text-[0.75rem] sm:text-sm text-textSecondary"><span
-                    className={cn(compressedSize && "line-through opacity-50")}>{originalSize}</span> {compressedSize}</span>
+                    className="font-medium text-[0.85rem] sm:text-[0.9rem] overflow-ellipsis line-clamp-2 break-all">{title}</span>
+                <span className="font-normal text-[0.8rem] sm:text-sm text-textSecondary"><span
+                    className={cn(compressedSize && "line-through opacity-70")}>{originalSize}</span> {compressedSize}</span>
             </div>
             {
                 currentState === "compressed" ? (
