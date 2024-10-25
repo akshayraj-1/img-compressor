@@ -12,7 +12,7 @@ export default {
                 primaryLight: "#60a7f9",
                 background: "#fff",
                 surface: "#fcfcff",
-                surfaceVariant: "#f5f5f8",
+                surfaceSecondary: "#f5f5f8",
                 textPrimary: "#263238",
                 textSecondary: "#8f9ba4"
             },
