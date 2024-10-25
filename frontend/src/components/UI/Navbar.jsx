@@ -7,7 +7,7 @@ function Navbar() {
         <nav
             className="sticky top-0 z-[5] flex justify-between items-center w-full px-5 sm:px-8 py-5 bg-surface shadow-navBar">
             <Link to="/">
-                <img className="h-[1.1rem]" src="/images/logo.svg" alt="logo"/>
+                <img className="h-5" src="/images/logo.svg" alt="logo"/>
             </Link>
             <a href="https://github.com/akshayraj-1/ImgCompressor" target="_blank">
                 <img className="h-6"
