@@ -1,4 +1,4 @@
-import {useRef, useState} from "react";
+import {useCallback, useRef, useState} from "react";
 import {Upload} from 'lucide-react';
 import useCustomToast from "../hooks/useCustomToast.jsx";
 import useImageCompressor from "../hooks/useImageCompressor.js";
@@ -24,19 +24,17 @@ function Home() {
     const {CustomToastModal, showToast} = useCustomToast();
     const {compress} = useImageCompressor();
 
-    const updateCompressionQueue = (imgName, oldState, newState, updatedFields = {}) => {
-        setCompressionQueue(prevState => {
-            return prevState.map(file => {
-                if (file.imgName === imgName && file.currentState === oldState) {
-                    return { ...file, currentState: newState, ...updatedFields };
-                } else {
-                    return file;
-                }
-            });
-        });
-    };
+    const updateCompressionQueue = useCallback((imgName, oldState, newState, updatedFields = {}) => {
+        setCompressionQueue(prevState =>
+            prevState.map(file =>
+                file.imgName === imgName && file.currentState === oldState
+                    ? {...file, currentState: newState, ...updatedFields}
+                    : file
+            )
+        );
+    }, []);
 
-    const uploadImagesForCompression = async (files) => {
+    const uploadImagesForCompression = useCallback(async (files) => {
         if (!files || files.length > MAX_FILE_COUNT) {
             showToast("Please select less than 30 images", "error");
             return;
@@ -59,7 +57,7 @@ function Home() {
 
         setCompressionQueue(prev => [...currentBatch, ...prev]);
 
-        const response = await compress(files, 20, (progress) => {
+        const response = await compress(files, 25, (progress) => {
             if (progress >= 100) {
                 currentBatch.forEach(file => {
                     updateCompressionQueue(file.imgName, "uploading", "compressing");
@@ -87,9 +85,9 @@ function Home() {
                 }
             })
         }
-    };
+    }, [compress, showToast, updateCompressionQueue]);
 
-    const handleImageDrop = (e) => {
+    const handleImageDrop = useCallback(e => {
         e.preventDefault();
         e.stopPropagation();
         const dataTransfer = e.dataTransfer;
@@ -99,13 +97,17 @@ function Home() {
                 dataTransfer.clearData();
             });
         }
-    };
+    }, [uploadImagesForCompression]);
 
-    const handleImageSelection = (e) => {
+    const handleImageSelection = useCallback(e => {
         uploadImagesForCompression(Array.from(e.target.files)).then(() => {
             e.target.value = null;
         });
-    };
+    }, [uploadImagesForCompression]);
+
+    const handleUploadBtnClick = useCallback(() => {
+        inputRef.current.click();
+    }, []);
 
 
     return (
@@ -114,10 +116,10 @@ function Home() {
             <MainBackground className="relative">
                 <section
                     className="relative flex flex-col gap-3 items-center w-screen h-auto min-h-screen px-5 sm:px-8">
-                    <h1 className="text-center text-[2.3rem] sm:text-[2.6rem] leading-[125%] font-bold">
+                    <h1 className="text-center text-4xl sm:text-5xl font-bold">
                         <span className="text-primary">Online</span> Image Compressor
                     </h1>
-                    <p className="text-textSecondary text-center text-sm sm:text-base sm:mx-6 sm:text-center">
+                    <p className="text-textSecondary text-center text-[0.9rem] sm:text-base sm:mx-6 sm:text-center">
                         Compress images with a single click, reduce image size without losing image quality.
                     </p>
                     <div
@@ -129,8 +131,6 @@ function Home() {
                             e.preventDefault();
                             setIsDragging(true);
                         }}
-                        onDragEnter={() => setIsDragging(true)}
-                        onDragExit={() => setIsDragging(false)}
                         onDragLeave={() => setIsDragging(false)}
                     >
                         <div className="flex flex-col justify-center items-center gap-3.5">
@@ -142,8 +142,8 @@ function Home() {
                                     className="py-3"
                                     label="Upload Image"
                                     icon={<Upload size={18} absoluteStrokeWidth/>}
-                                    onClick={() => inputRef.current.click()}/>
-                            <p className="text-textSecondary text-sm">or drop your images</p>
+                                    onClick={handleUploadBtnClick}/>
+                            <p className="text-textSecondary text-[0.9rem]">or drop your images</p>
                         </div>
                     </div>
 
@@ -179,7 +179,7 @@ function Home() {
 
             {/* Image Comparison */}
             <section className="flex flex-col gap-3 items-center justify-start size-full px-5 sm:px-8 pt-0 pb-28">
-                <h2 className="text-3xl sm:text-4xl leading-[125%] font-bold text-center">Can you find the
+                <h2 className="text-4xl font-bold text-center">Can you find the
                     difference?</h2>
                 <p className="text-textSecondary text-center sm:max-w-[60vw]">With seamless compression, you can reduce
                     image size without losing image quality</p>
