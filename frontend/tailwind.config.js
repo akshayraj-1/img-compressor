@@ -26,7 +26,7 @@ export default {
                 primaryButton: "0px 20px 70px 0px rgba(74, 144, 226, 0.25)"
             },
             fontFamily: {
-                poppins: "Poppins, sans-serif",
+                poppins: "Poppins, sans-serif"
             }
         }
     },
