@@ -119,7 +119,7 @@ function Home() {
                     <h1 className="text-center text-4xl sm:text-5xl font-bold">
                         <span className="text-primary">Online</span> Image Compressor
                     </h1>
-                    <p className="text-textSecondary text-center text-[0.9rem] sm:text-base sm:mx-6 sm:text-center">
+                    <p className="text-base text-textSecondary text-center sm:mx-6 sm:text-center">
                         Compress images with a single click, reduce image size without losing image quality.
                     </p>
                     <div
@@ -181,10 +181,10 @@ function Home() {
             <section className="flex flex-col gap-3 items-center justify-start size-full px-5 sm:px-8 pt-0 pb-28">
                 <h2 className="text-4xl font-bold text-center">Can you find the
                     difference?</h2>
-                <p className="text-textSecondary text-center sm:max-w-[60vw]">With seamless compression, you can reduce
+                <p className="text-base text-textSecondary text-center sm:max-w-[60vw]">With seamless compression, you can reduce
                     image size without losing image quality</p>
                 <div
-                    className="w-full sm:w-[70vw] max-w-[850px] bg-surface shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
+                    className="w-full sm:w-[70vw] max-w-[850px] bg-surface shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-8">
                     <ImageComparison beforeImage={{src: img_sample, size: "1.5MB"}}
                                      afterImage={{src: img_sample_min, size: "209KB"}}
                     />
