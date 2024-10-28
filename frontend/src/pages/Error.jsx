@@ -3,14 +3,14 @@ import Button from "../components/UI/Button.jsx";
 
 function Error() {
     return (
-        <section className="flex flex-col gap-2 justify-center items-center size-full min-h-screen px-5 sm:px-8">
-            <object data={img_404} className="h-[52vh] w-full"/>
+        <section className="flex flex-col gap-2 justify-center items-center w-full h-screen px-5 sm:px-8">
+            <object data={img_404} className="h-[55vh] w-full object-contain"/>
             <p className="text-2xl sm:text-3xl font-bold mt-4">Page Not Found</p>
-            <span className="text-textSecondary text-[0.9rem] sm:text-base text-center mx-6">Oops! The page you are looking for does not exist</span>
+            <span className="text-textSecondary text-base text-center mx-6">Oops! The page you are looking for does not exist</span>
             <Button
                 type="link"
                 to="/"
-                className="mt-8 px-8 rounded-full"
+                className="my-8 px-8 rounded-full"
                 variant="primary"
                 label="Back to Home"/>
         </section>
