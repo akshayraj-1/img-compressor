@@ -185,8 +185,8 @@ function Home() {
                     image size without losing image quality</p>
                 <div
                     className="w-full sm:w-[70vw] max-w-[850px] bg-surface shadow-mainCard rounded-xl sm:rounded-3xl overflow-hidden mt-6">
-                    <ImageComparison beforeImage={{src: img_sample, size: "1.8MB"}}
-                                     afterImage={{src: img_sample_min, size: "420KB"}}
+                    <ImageComparison beforeImage={{src: img_sample, size: "1.5MB"}}
+                                     afterImage={{src: img_sample_min, size: "209KB"}}
                     />
                 </div>
             </section>
