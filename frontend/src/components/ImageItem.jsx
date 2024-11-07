@@ -48,6 +48,10 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
         setCurrentState(state);
     }, [state]);
 
+    useEffect(() => {
+        return () => URL.revokeObjectURL(imageSrc);
+    }, [imageSrc]);
+
     return (
         <motion.div variants={variants.item} initial={currentState === "uploading" && "initial"} animate={currentState === "uploading" && "animate"} className="relative flex gap-3 items-center w-full px-5 py-1">
             <div className={cn("relative h-16 aspect-[4/3] sm:aspect-video rounded-lg overflow-hidden bg-gray-100", isImageLoading && "animate-pulse")}>
