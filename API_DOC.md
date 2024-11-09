@@ -206,4 +206,4 @@ _Original and compressed sizes are in bytes_
 - Returned compressed sizes in response are represented in bytes.
 
 If you have any questions or feedback, please feel free
-to [raise an issue](https://github.com/akshayraj-1/ImgCompressor/issues)
+to [raise an issue](https://github.com/akshayraj-1/img-compressor/issues)
