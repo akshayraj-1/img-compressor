@@ -8,11 +8,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: "#407BFF",
-                primaryLight: "#60a7f9",
-                background: "#fff",
-                surface: "#fcfcff",
-                surfaceSecondary: "#f5f5f8",
+                colorPrimary: "#407BFF",
+                colorPrimaryLight: "#60a7f9",
+                colorBackground: "#fff",
+                colorSurface: "#fcfcff",
+                colorSurfaceSecondary: "#f5f5f8",
                 textPrimary: "#263238",
                 textSecondary: "#8f9ba4"
             },
