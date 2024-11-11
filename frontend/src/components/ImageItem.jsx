@@ -85,7 +85,7 @@ const ImageItem = React.memo(({id, state = "compressing", imageSrc, title, origi
                         </motion.div>
                     )
                     : (
-                        <motion.span variants={variants.currentSate} initial={"initial"} animate={"animate"} className={cn("min-w-16 text-center text-surface px-1.5 py-[1.5px] text-[0.75rem] rounded capitalize", currentState === "failed" ? "bg-red-400" : currentState === "uploading" ? "bg-yellow-400" : "bg-primary")}>
+                        <motion.span variants={variants.currentSate} initial={"initial"} animate={"animate"} className={cn("min-w-16 text-center text-colorSurface px-1.5 py-[1.5px] text-[0.75rem] rounded capitalize", currentState === "failed" ? "bg-red-400" : currentState === "uploading" ? "bg-yellow-400" : "bg-colorPrimary")}>
                             {currentState}
                         </motion.span>
                     )
