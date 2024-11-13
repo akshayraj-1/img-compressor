@@ -1,8 +1,5 @@
 # Image Compression API
 
-> [!WARNING]
-> This API is currently a work in progress project. So be aware that it may change in the future.
-
 Image Compression API built with PHP for compressing multiple images at once.
 Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applications that requires image uploads and optimizations to improve loading time and reduced bandwidth usage.
 
