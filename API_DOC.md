@@ -12,7 +12,7 @@ Supported formats are `PNG, JPG, JPEG, and GIF`. The API is ideal for web applic
 
 ## Base URL
 
-<img src="https://img.shields.io/badge/current%20version-v2-blue.svg?style=flat" alt="Version">
+<img src="https://img.shields.io/badge/current%20version-v2-green.svg?style=flat" alt="Version">
 
 ```angular17svg
 https://api.akshayraj.io/image-compressor/:version/
@@ -73,7 +73,7 @@ _The Public API key is only for `testing purposes`. Please do not use it in prod
     <button type="submit">Upload & Compress</button>
 </form>
 ```
-_Alternatively, you can test the API using tools like Postman or cURL._
+_Alternatively, you can test the API using tools like `Postman` or `cURL`._
 
 
 ## Response Codes
@@ -151,7 +151,7 @@ The API returns a JSON response containing the status of the request and the det
 
 ```
 
-_Original and compressed sizes are in bytes_
+_Returned sizes in the response are represented in `bytes`_
 
 ## Error Responses
 
