@@ -16,6 +16,13 @@ https://api.akshayraj.io/image-compressor/:version/
 ```
 _Replace the `:version` with the actual version number you are using for e.g. `https://api.akshayraj.io/image-compressor/v2`._
 
+### Public API Key
+```js
+mSW0LMB5Pj4pNWWiRGfHL89KYdzrdWNM
+```
+_The Public API key is only for `testing purposes`. Please do not use it in production._
+
+
 ## Allowed Methods
 
 - **POST**: Upload and compress images.
@@ -30,14 +37,6 @@ _Replace the `:version` with the actual version number you are using for e.g. `h
 | `key`     | Yes      | `String`               | API key used for authentication.                               |
 | `files`   | Yes      | `File \| File[]`       | Image(s) to upload and compress. Supports PNG, JPG, JPEG, GIF. | Images to upload and compress. Supports PNG, JPG, JPEG, GIF. |
 | `quality` | No       | `Integer \| Integer[]` | Compression quality (range: 1-100). Default value is `75`.     | Compression quality (1-100). Default is `75`. |
-
-
-### Public API Key
-```js
-mSW0LMB5Pj4pNWWiRGfHL89KYdzrdWNM
-```
-_The Public API key is only for `testing purposes`. Please do not use it in production._
-
 
 ### File Constraints
 
