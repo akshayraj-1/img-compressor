@@ -38,7 +38,7 @@ Follow these steps to set up and run the project locally.
 
 ```bash
    git clone https://github.com/akshayraj-1/img-compressor.git
-   cd ImgCompressor
+   cd img-compressor
    cd frontend
 ```
 
