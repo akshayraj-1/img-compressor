@@ -1,7 +1,7 @@
 {
     "name":  "img-compressor",
     "private":  false,
-    "version":  "2.3.4",
+    "version":  "2.3.5",
     "type":  "module",
     "license":  "MIT",
     "description":  "imgCompressor - Online Image Compressor",
